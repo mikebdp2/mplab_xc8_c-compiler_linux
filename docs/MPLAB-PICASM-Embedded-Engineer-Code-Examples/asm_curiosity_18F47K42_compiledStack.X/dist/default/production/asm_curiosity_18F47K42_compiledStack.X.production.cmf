@@ -1,0 +1,257 @@
+%CMF
+# %PSECTS Section
+# For each object file, details of its psects are enumerated here.
+# The begining of the section is indicated by %PSECTS.  The first
+# line indicates the name of the first object file, e.g.
+#    $foo.obj
+# Each line that follows describes a psect in that object file, until
+# the next object file.  The lines that describe a psect have the
+# format:
+#    <psect name> <class name> <space> <link address> <load addresses> <length> <delta>
+# All addresses and the length are given in unqualified hexadecimal
+# in delta units.  Any other numeric values are decimal.
+%PSECTS
+$build/default/production/cstack.o
+resetVec CODE 0 0 0 4 1
+code CODE 0 1FF9A 1FF9A 66 1
+config CONFIG 4 300000 300000 A 1
+$COMMON
+udata_acs COMRAM 1 0 0 8 1
+# %UNUSED Section
+# This section enumerates the unused ranges of each CLASS. Each entry
+# is described on a single line as follows:
+#    <class name> <range> <delta>
+# Addresses given in the range are in hexadecimal and units of delta.
+%UNUSED
+RAM 60-1FFF 1
+SFR 3800-3FFF 1
+BANK0 60-FF 1
+BANK1 100-1FF 1
+BANK2 200-2FF 1
+BANK3 300-3FF 1
+BANK4 400-4FF 1
+BANK5 500-5FF 1
+BANK6 600-6FF 1
+BANK7 700-7FF 1
+BANK8 800-8FF 1
+BANK9 900-9FF 1
+CONST 4-1FF99 1
+IDLOC 200000-20000F 1
+SMALLCONST 2000-1FF99 1
+CODE 4-1FF99 1
+BANK10 A00-AFF 1
+BANK11 B00-BFF 1
+BANK12 C00-CFF 1
+BANK13 D00-DFF 1
+BANK14 E00-EFF 1
+BANK15 F00-FFF 1
+BANK16 1000-10FF 1
+BANK17 1100-11FF 1
+BANK18 1200-12FF 1
+BANK19 1300-13FF 1
+BANK20 1400-14FF 1
+BANK21 1500-15FF 1
+BANK22 1600-16FF 1
+BANK23 1700-17FF 1
+BANK24 1800-18FF 1
+BANK25 1900-19FF 1
+BANK26 1A00-1AFF 1
+BANK27 1B00-1BFF 1
+BANK28 1C00-1CFF 1
+BANK29 1D00-1DFF 1
+BANK30 1E00-1EFF 1
+BANK31 1F00-1FFF 1
+BIGRAM 4-1FFF 1
+COMRAM 8-5F 1
+EEDATA 310000-3103FF 1
+MEDIUMCONST 2000-FFFF 1
+MEDIUMCONST 12000-1FF99 1
+# %LINETAB Section
+# This section enumerates the file/line to address mappings.
+# The beginning of the section is indicated by %LINETAB.
+# The first line indicates the name of the first object file, e.g.
+#   $foo.obj
+# Each line that follows describes a single mapping until the next
+# object file.  Mappings have the following format:
+#    <address> <psect name> <class name> ><line number>:<file name>
+# The address is absolute and given given in unqualified hex 
+# in delta units of the psect. All mappings within an object file
+# are in ascending order of addresses.
+# All other numeric values are in decimal.
+%LINETAB
+$build/default/production/cstack.o
+0 resetVec CODE >48:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_18F47K42_compiledStack.X/cstack.s
+0 resetVec CODE >49:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_18F47K42_compiledStack.X/cstack.s
+1FF9A code CODE >56:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_18F47K42_compiledStack.X/cstack.s
+1FF9A code CODE >57:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_18F47K42_compiledStack.X/cstack.s
+1FF9C code CODE >58:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_18F47K42_compiledStack.X/cstack.s
+1FF9E code CODE >59:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_18F47K42_compiledStack.X/cstack.s
+1FFA0 code CODE >60:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_18F47K42_compiledStack.X/cstack.s
+1FFA2 code CODE >61:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_18F47K42_compiledStack.X/cstack.s
+1FFA4 code CODE >67:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_18F47K42_compiledStack.X/cstack.s
+1FFA4 code CODE >68:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_18F47K42_compiledStack.X/cstack.s
+1FFA6 code CODE >69:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_18F47K42_compiledStack.X/cstack.s
+1FFA8 code CODE >70:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_18F47K42_compiledStack.X/cstack.s
+1FFAA code CODE >71:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_18F47K42_compiledStack.X/cstack.s
+1FFAC code CODE >86:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_18F47K42_compiledStack.X/cstack.s
+1FFAC code CODE >87:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_18F47K42_compiledStack.X/cstack.s
+1FFAE code CODE >88:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_18F47K42_compiledStack.X/cstack.s
+1FFB0 code CODE >89:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_18F47K42_compiledStack.X/cstack.s
+1FFB2 code CODE >90:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_18F47K42_compiledStack.X/cstack.s
+1FFB4 code CODE >91:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_18F47K42_compiledStack.X/cstack.s
+1FFB6 code CODE >92:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_18F47K42_compiledStack.X/cstack.s
+1FFB6 code CODE >93:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_18F47K42_compiledStack.X/cstack.s
+1FFBC code CODE >94:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_18F47K42_compiledStack.X/cstack.s
+1FFC2 code CODE >95:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_18F47K42_compiledStack.X/cstack.s
+1FFC8 code CODE >96:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_18F47K42_compiledStack.X/cstack.s
+1FFCE code CODE >97:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_18F47K42_compiledStack.X/cstack.s
+1FFD2 code CODE >98:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_18F47K42_compiledStack.X/cstack.s
+1FFD8 code CODE >99:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_18F47K42_compiledStack.X/cstack.s
+1FFDE code CODE >101:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_18F47K42_compiledStack.X/cstack.s
+1FFE4 code CODE >102:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_18F47K42_compiledStack.X/cstack.s
+1FFEA code CODE >103:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_18F47K42_compiledStack.X/cstack.s
+1FFEC code CODE >104:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_18F47K42_compiledStack.X/cstack.s
+1FFF0 code CODE >105:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_18F47K42_compiledStack.X/cstack.s
+1FFF6 code CODE >106:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_18F47K42_compiledStack.X/cstack.s
+1FFFC code CODE >107:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_18F47K42_compiledStack.X/cstack.s
+# %SYMTAB Section
+# An enumeration of all symbols in the program.
+# The beginning of the section is indicated by %SYMTAB.
+# Each line describes a single symbol as follows:
+#    <label> <value> [-]<load-adj> <class> <space> <psect> <file-name>
+# The value and load-adj are both in unqualified hexadecimal.
+# All other numeric values are in decimal.  The load-adj is the
+# quantity one needs to add to the symbol value in order to obtain the load
+# address of the symbol.  This value may be signed. If the symbol
+# was defined in a psect then <psect> will be "-". File-name
+# is the name of the object file in which the symbol was defined.
+%SYMTAB
+?pa_add 4 0 COMRAM 1 udata_acs build/default/production/cstack.o
+__Hspace_0 20000 0 ABS 0 - build/default/production/cstack.o
+__Hspace_1 8 0 ABS 0 - build/default/production/cstack.o
+__Hspace_3 0 0 ABS 0 - build/default/production/cstack.o
+__Hspace_4 60000A 0 ABS 0 - build/default/production/cstack.o
+incval 2 0 COMRAM 1 udata_acs build/default/production/cstack.o
+__Hudata_bank0 8 0 ABS 0 udata_bank0 build/default/production/cstack.o
+__Hudata_bank1 8 0 ABS 0 udata_bank1 build/default/production/cstack.o
+__Hudata_bank2 8 0 ABS 0 udata_bank2 build/default/production/cstack.o
+__Hudata_bank3 8 0 ABS 0 udata_bank3 build/default/production/cstack.o
+__Hudata_bank4 8 0 ABS 0 udata_bank4 build/default/production/cstack.o
+__Hudata_bank5 8 0 ABS 0 udata_bank5 build/default/production/cstack.o
+__Hudata_bank6 8 0 ABS 0 udata_bank6 build/default/production/cstack.o
+__Hudata_bank7 8 0 ABS 0 udata_bank7 build/default/production/cstack.o
+__Hudata_bank8 8 0 ABS 0 udata_bank8 build/default/production/cstack.o
+__Hudata_bank9 8 0 ABS 0 udata_bank9 build/default/production/cstack.o
+result 0 0 COMRAM 1 udata_acs build/default/production/cstack.o
+__LresetVec 0 0 CODE 0 resetVec build/default/production/cstack.o
+?pa_incr 4 0 COMRAM 1 udata_acs build/default/production/cstack.o
+__Hudata_bank10 8 0 ABS 0 udata_bank10 build/default/production/cstack.o
+__Hudata_bank11 8 0 ABS 0 udata_bank11 build/default/production/cstack.o
+__Hudata_bank12 8 0 ABS 0 udata_bank12 build/default/production/cstack.o
+__Hudata_bank13 8 0 ABS 0 udata_bank13 build/default/production/cstack.o
+__Hudata_bank14 8 0 ABS 0 udata_bank14 build/default/production/cstack.o
+__Hudata_bank15 8 0 ABS 0 udata_bank15 build/default/production/cstack.o
+__Hudata_bank16 8 0 ABS 0 udata_bank16 build/default/production/cstack.o
+__Hudata_bank17 8 0 ABS 0 udata_bank17 build/default/production/cstack.o
+__Hudata_bank18 8 0 ABS 0 udata_bank18 build/default/production/cstack.o
+__Hudata_bank19 8 0 ABS 0 udata_bank19 build/default/production/cstack.o
+__Hudata_bank20 8 0 ABS 0 udata_bank20 build/default/production/cstack.o
+__Hudata_bank21 8 0 ABS 0 udata_bank21 build/default/production/cstack.o
+__Hudata_bank22 8 0 ABS 0 udata_bank22 build/default/production/cstack.o
+__Hudata_bank23 8 0 ABS 0 udata_bank23 build/default/production/cstack.o
+__Hudata_bank24 8 0 ABS 0 udata_bank24 build/default/production/cstack.o
+__Hudata_bank25 8 0 ABS 0 udata_bank25 build/default/production/cstack.o
+__Hudata_bank26 8 0 ABS 0 udata_bank26 build/default/production/cstack.o
+__Hudata_bank27 8 0 ABS 0 udata_bank27 build/default/production/cstack.o
+__Hudata_bank28 8 0 ABS 0 udata_bank28 build/default/production/cstack.o
+__Hudata_bank29 8 0 ABS 0 udata_bank29 build/default/production/cstack.o
+__Hudata_bank30 8 0 ABS 0 udata_bank30 build/default/production/cstack.o
+__Hudata_bank31 8 0 ABS 0 udata_bank31 build/default/production/cstack.o
+__HresetVec 4 0 CODE 0 resetVec build/default/production/cstack.o
+__Hedata 8 0 ABS 0 edata build/default/production/cstack.o
+__Hudata 8 0 ABS 0 udata build/default/production/cstack.o
+__Hconfig 30000A 0 CONFIG 4 config build/default/production/cstack.o
+__Ledata 8 0 ABS 0 edata build/default/production/cstack.o
+__Ludata 8 0 ABS 0 udata build/default/production/cstack.o
+__Hcode 8 0 ABS 0 code build/default/production/cstack.o
+__Hdata 8 0 ABS 0 data build/default/production/cstack.o
+__Lcode 8 0 ABS 0 code build/default/production/cstack.o
+__Ldata 8 0 ABS 0 data build/default/production/cstack.o
+__S0 20000 0 ABS 0 - build/default/production/cstack.o
+__S1 8 0 ABS 0 - build/default/production/cstack.o
+__S3 0 0 ABS 0 - build/default/production/cstack.o
+__Ludata_bank10 8 0 ABS 0 udata_bank10 build/default/production/cstack.o
+__Ludata_bank11 8 0 ABS 0 udata_bank11 build/default/production/cstack.o
+__Ludata_bank12 8 0 ABS 0 udata_bank12 build/default/production/cstack.o
+__Ludata_bank13 8 0 ABS 0 udata_bank13 build/default/production/cstack.o
+__Ludata_bank14 8 0 ABS 0 udata_bank14 build/default/production/cstack.o
+__Ludata_bank15 8 0 ABS 0 udata_bank15 build/default/production/cstack.o
+__Ludata_bank16 8 0 ABS 0 udata_bank16 build/default/production/cstack.o
+__Ludata_bank17 8 0 ABS 0 udata_bank17 build/default/production/cstack.o
+__Ludata_bank18 8 0 ABS 0 udata_bank18 build/default/production/cstack.o
+__Ludata_bank19 8 0 ABS 0 udata_bank19 build/default/production/cstack.o
+__Ludata_bank20 8 0 ABS 0 udata_bank20 build/default/production/cstack.o
+__Ludata_bank21 8 0 ABS 0 udata_bank21 build/default/production/cstack.o
+__Ludata_bank22 8 0 ABS 0 udata_bank22 build/default/production/cstack.o
+__Ludata_bank23 8 0 ABS 0 udata_bank23 build/default/production/cstack.o
+__Ludata_bank24 8 0 ABS 0 udata_bank24 build/default/production/cstack.o
+__Ludata_bank25 8 0 ABS 0 udata_bank25 build/default/production/cstack.o
+__Ludata_bank26 8 0 ABS 0 udata_bank26 build/default/production/cstack.o
+__Ludata_bank27 8 0 ABS 0 udata_bank27 build/default/production/cstack.o
+__Ludata_bank28 8 0 ABS 0 udata_bank28 build/default/production/cstack.o
+__Ludata_bank29 8 0 ABS 0 udata_bank29 build/default/production/cstack.o
+__Ludata_bank30 8 0 ABS 0 udata_bank30 build/default/production/cstack.o
+__Ludata_bank31 8 0 ABS 0 udata_bank31 build/default/production/cstack.o
+__Lconfig 0 0 CONFIG 4 config build/default/production/cstack.o
+__Lspace_0 0 0 ABS 0 - build/default/production/cstack.o
+__Lspace_1 0 0 ABS 0 - build/default/production/cstack.o
+__Lspace_3 0 0 ABS 0 - build/default/production/cstack.o
+__Lspace_4 0 0 ABS 0 - build/default/production/cstack.o
+__Ludata_bank0 8 0 ABS 0 udata_bank0 build/default/production/cstack.o
+__Ludata_bank1 8 0 ABS 0 udata_bank1 build/default/production/cstack.o
+__Ludata_bank2 8 0 ABS 0 udata_bank2 build/default/production/cstack.o
+__Ludata_bank3 8 0 ABS 0 udata_bank3 build/default/production/cstack.o
+__Ludata_bank4 8 0 ABS 0 udata_bank4 build/default/production/cstack.o
+__Ludata_bank5 8 0 ABS 0 udata_bank5 build/default/production/cstack.o
+__Ludata_bank6 8 0 ABS 0 udata_bank6 build/default/production/cstack.o
+__Ludata_bank7 8 0 ABS 0 udata_bank7 build/default/production/cstack.o
+__Ludata_bank8 8 0 ABS 0 udata_bank8 build/default/production/cstack.o
+__Ludata_bank9 8 0 ABS 0 udata_bank9 build/default/production/cstack.o
+?au_main 0 0 COMRAM 1 udata_acs build/default/production/cstack.o
+__Hudata_acs 8 0 COMRAM 1 udata_acs build/default/production/cstack.o
+__Ludata_acs 0 0 COMRAM 1 udata_acs build/default/production/cstack.o
+# %SPLITSTAB Section
+# This section enumerates all the psect splits performed by the assembler.
+# The beginning of the section is indicated by %SPLITSTAB.
+# Each line is a record a particular split, where the parent psect is on
+# the left and the child on the right.  Note that a child psect is always
+# split form the top of the parent psect. All splits from a given parent
+# are listed in the order in which they occurred.
+%SPLITSTAB
+# %DABS Section
+# This section contains a table of all usuage of the assember
+# directive DABS in the program. Each line has the following format:
+#   <name> <space> <address> <size>
+# If the DABS was originally labelled then that shall be <name>,
+# otherwise name will be "-".  The <space> number is in decimal.
+# <address> and <size> are in byte units as unqaulified hexadecimal
+%DABS
+# %SEGMENTS Section
+# This sections enumerates the segments of the program.  Each segment
+# is described on a single line as follows:
+#    <name> <space> <link address> <file address> <size> <delta>
+# Addresses and size are in unqualified hexadecimal.  The link address
+# and size are in units of delta. The file address is in units of bytes.
+# All other numeric quantities are in decimal.
+%SEGMENTS
+resetVec 0 0 0 4 1
+code 0 1FF9A 1FF9A 66 1
+udata_acs 1 0 0 8 1
+# %NOTES Section
+# This section contains data of all the note-psects.  The beginning of the section
+# is indicated by %NOTES. The first line indicates the name and decimal
+# byte-length of the first note-psect, e.g.
+#   $codecov_info_hdr 16
+# Each line that follows contains the byte-data of the psect in hexadecimal as a
+# space-separated list. These lines are limited to 16 bytes of data.
+%NOTES

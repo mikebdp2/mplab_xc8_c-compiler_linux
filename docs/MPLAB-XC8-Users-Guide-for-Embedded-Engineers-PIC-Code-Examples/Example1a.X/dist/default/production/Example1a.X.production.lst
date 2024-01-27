@@ -1,0 +1,1470 @@
+
+
+Microchip Technology PIC LITE Macro Assembler V2.00 build -1524193055 
+                                                                                               Thu Dec 13 17:24:47 2018
+
+Microchip Technology Omniscient Code Generator v2.00 (Free mode) build 20180527130849
+     1  0000                     
+      + 0000                     
+     2                           ; Version 2.00
+     3                           ; Generated 27/05/2018 GMT
+     4                           
+     5                           ; 
+     6                           ; Copyright © 2018, Microchip Technology Inc. and its subsidiaries ("Microchip")
+     7                           ; All rights reserved.
+     8                           ; 
+     9                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+                                 ip").
+    10                           ; 
+    11                           ; Redistribution and use in source and binary forms, with or without modification, are
+    12                           ; permitted provided that the following conditions are met:
+    13                           ; 
+    14                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+                                 t of
+    15                           ;        conditions and the following disclaimer.
+    16                           ; 
+    17                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+                                 list
+    18                           ;        of conditions and the following disclaimer in the documentation and/or other
+    19                           ;        materials provided with the distribution.
+    20                           ; 
+    21                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+                                 is
+    22                           ;        software without specific prior written permission.
+    23                           ; 
+    24                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+
+    25                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+                                 OR
+    26                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+                                 T,
+    27                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+                                 
+    28                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+                                 
+    29                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+                                 RICT
+    30                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+                                 SE OF
+    31                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    32                           ; 
+    33                           
+    34                           
+    35                           ; 
+    36                           ; Code-generator required, PIC16F1939 Definitions
+    37                           ; 
+    38  0008                     fsr0h equ 05h
+    39  0005                     fsr0l equ 04h
+    40  0004                     fsr1h equ 07h
+    41  0007                     fsr1l equ 06h
+    42  0006                     indf equ 00h
+    43  0000                     indf0 equ 00h
+    44  0000                     indf1 equ 01h
+    45  0001                     intcon equ 0Bh
+    46  000B                     pc equ 02h
+    47  0002                     pcl equ 02h
+    48  0002                     pclath equ 0Ah
+    49  000A                     status equ 03h
+    50  0003                     wreg equ 09h
+    51  0009                     
+     2                           opt pagewidth 120
+     3  0000                     byte0	macro	val
+     4                           	(getbyte(val,0))
+     5                           endm
+     6  0000                     byte1	macro	val
+     7                           	(getbyte(val,1))
+     8                           endm
+     9  0000                     byte2	macro	val
+    10                           	(getbyte(val,2))
+    11                           endm
+    12  0000                     byte3	macro	val
+    13                           	(getbyte(val,3))
+    14                           endm
+    15  0000                     byte4	macro	val
+    16                           	(getbyte(val,4))
+    17                           endm
+    18  0000                     byte5	macro	val
+    19                           	(getbyte(val,5))
+    20                           endm
+    21  0000                     byte6	macro	val
+    22                           	(getbyte(val,6))
+    23                           endm
+    24  0000                     byte7	macro	val
+    25                           	(getbyte(val,7))
+    26                           endm
+    27  0000                     getword	macro	val,pos
+    28                           	(((val) >> (8 * pos)) and 0xffff)
+    29                           endm
+    30  0000                     word0	macro	val
+    31                           	(getword(val,0))
+    32                           endm
+    33  0000                     word1	macro	val
+    34                           	(getword(val,2))
+    35                           endm
+    36  0000                     word2	macro	val
+    37                           	(getword(val,4))
+    38                           endm
+    39  0000                     word3	macro	val
+    40                           	(getword(val,6))
+    41                           endm
+    42  0000                     gettword	macro	val,pos
+    43                           	(((val) >> (8 * pos)) and 0xffffff)
+    44                           endm
+    45  0000                     tword0	macro	val
+    46                           	(gettword(val,0))
+    47                           endm
+    48  0000                     tword1	macro	val
+    49                           	(gettword(val,3))
+    50                           endm
+    51  0000                     tword2	macro	val
+    52                           	(gettword(val,6))
+    53                           endm
+    54  0000                     getdword	macro	val,pos
+    55                           	(((val) >> (8 * pos)) and 0xffffffff)
+    56                           endm
+    57  0000                     dword0	macro	val
+    58                           	(getdword(val,0))
+    59                           endm
+    60  0000                     dword1	macro	val
+    61                           	(getdword(val,4))
+    62                           endm
+    63  0000                     clrc	macro
+    64                           	bcf	3,0
+    65                           	endm
+    66  0000                     clrz	macro
+    67                           	bcf	3,2
+    68                           	endm
+    69  0000                     setc	macro
+    70                           	bsf	3,0
+    71                           	endm
+    72  0000                     setz	macro
+    73                           	bsf	3,2
+    74                           	endm
+    75  0000                     skipc	macro
+    76                           	btfss	3,0
+    77                           	endm
+    78  0000                     skipz	macro
+    79                           	btfss	3,2
+    80                           	endm
+    81  0000                     skipnc	macro
+    82                           	btfsc	3,0
+    83                           	endm
+    84  0000                     skipnz	macro
+    85                           	btfsc	3,2
+    86                           	endm
+    87  0000                     pushw	macro
+    88                           	movwi fsr1++
+    89                           	endm
+    90  0000                     popw	macro
+    91                           	moviw --fsr1
+    92                           	endm
+    93  0000                     # 54 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+    94                           INDF0 equ 00h ;# 
+    95  0000                     # 74 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+    96                           INDF1 equ 01h ;# 
+    97  0001                     # 94 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+    98                           PCL equ 02h ;# 
+    99  0002                     # 114 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   100                           STATUS equ 03h ;# 
+   101  0003                     # 177 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   102                           FSR0L equ 04h ;# 
+   103  0004                     # 197 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   104                           FSR0H equ 05h ;# 
+   105  0005                     # 221 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   106                           FSR1L equ 06h ;# 
+   107  0006                     # 241 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   108                           FSR1H equ 07h ;# 
+   109  0007                     # 261 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   110                           BSR equ 08h ;# 
+   111  0008                     # 313 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   112                           WREG equ 09h ;# 
+   113  0009                     # 333 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   114                           PCLATH equ 0Ah ;# 
+   115  000A                     # 353 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   116                           INTCON equ 0Bh ;# 
+   117  000B                     # 431 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   118                           PORTA equ 0Ch ;# 
+   119  000C                     # 493 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   120                           PORTB equ 0Dh ;# 
+   121  000D                     # 555 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   122                           PORTC equ 0Eh ;# 
+   123  000E                     # 617 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   124                           PORTD equ 0Fh ;# 
+   125  000F                     # 679 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   126                           PORTE equ 010h ;# 
+   127  0010                     # 717 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   128                           PIR1 equ 011h ;# 
+   129  0011                     # 779 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   130                           PIR2 equ 012h ;# 
+   131  0012                     # 836 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   132                           PIR3 equ 013h ;# 
+   133  0013                     # 882 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   134                           TMR0 equ 015h ;# 
+   135  0015                     # 902 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   136                           TMR1 equ 016h ;# 
+   137  0016                     # 909 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   138                           TMR1L equ 016h ;# 
+   139  0016                     # 929 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   140                           TMR1H equ 017h ;# 
+   141  0017                     # 949 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   142                           T1CON equ 018h ;# 
+   143  0018                     # 1021 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   144                           T1GCON equ 019h ;# 
+   145  0019                     # 1098 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   146                           TMR2 equ 01Ah ;# 
+   147  001A                     # 1118 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   148                           PR2 equ 01Bh ;# 
+   149  001B                     # 1138 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   150                           T2CON equ 01Ch ;# 
+   151  001C                     # 1209 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   152                           CPSCON0 equ 01Eh ;# 
+   153  001E                     # 1269 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   154                           CPSCON1 equ 01Fh ;# 
+   155  001F                     # 1315 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   156                           TRISA equ 08Ch ;# 
+   157  008C                     # 1377 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   158                           TRISB equ 08Dh ;# 
+   159  008D                     # 1439 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   160                           TRISC equ 08Eh ;# 
+   161  008E                     # 1501 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   162                           TRISD equ 08Fh ;# 
+   163  008F                     # 1563 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   164                           TRISE equ 090h ;# 
+   165  0090                     # 1601 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   166                           PIE1 equ 091h ;# 
+   167  0091                     # 1663 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   168                           PIE2 equ 092h ;# 
+   169  0092                     # 1720 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   170                           PIE3 equ 093h ;# 
+   171  0093                     # 1766 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   172                           OPTION_REG equ 095h ;# 
+   173  0095                     # 1849 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   174                           PCON equ 096h ;# 
+   175  0096                     # 1900 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   176                           WDTCON equ 097h ;# 
+   177  0097                     # 1959 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   178                           OSCTUNE equ 098h ;# 
+   179  0098                     # 2017 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   180                           OSCCON equ 099h ;# 
+   181  0099                     # 2089 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   182                           OSCSTAT equ 09Ah ;# 
+   183  009A                     # 2151 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   184                           ADRES equ 09Bh ;# 
+   185  009B                     # 2158 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   186                           ADRESL equ 09Bh ;# 
+   187  009B                     # 2178 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   188                           ADRESH equ 09Ch ;# 
+   189  009C                     # 2198 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   190                           ADCON0 equ 09Dh ;# 
+   191  009D                     # 2287 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   192                           ADCON1 equ 09Eh ;# 
+   193  009E                     # 2359 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   194                           LATA equ 010Ch ;# 
+   195  010C                     # 2421 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   196                           LATB equ 010Dh ;# 
+   197  010D                     # 2483 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   198                           LATC equ 010Eh ;# 
+   199  010E                     # 2545 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   200                           LATD equ 010Fh ;# 
+   201  010F                     # 2615 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   202                           LATE equ 0110h ;# 
+   203  0110                     # 2653 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   204                           CM1CON0 equ 0111h ;# 
+   205  0111                     # 2710 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   206                           CM1CON1 equ 0112h ;# 
+   207  0112                     # 2776 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   208                           CM2CON0 equ 0113h ;# 
+   209  0113                     # 2833 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   210                           CM2CON1 equ 0114h ;# 
+   211  0114                     # 2899 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   212                           CMOUT equ 0115h ;# 
+   213  0115                     # 2925 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   214                           BORCON equ 0116h ;# 
+   215  0116                     # 2952 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   216                           FVRCON equ 0117h ;# 
+   217  0117                     # 3028 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   218                           DACCON0 equ 0118h ;# 
+   219  0118                     # 3089 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   220                           DACCON1 equ 0119h ;# 
+   221  0119                     # 3141 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   222                           SRCON0 equ 011Ah ;# 
+   223  011A                     # 3212 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   224                           SRCON1 equ 011Bh ;# 
+   225  011B                     # 3274 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   226                           APFCON equ 011Dh ;# 
+   227  011D                     # 3330 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   228                           ANSELA equ 018Ch ;# 
+   229  018C                     # 3388 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   230                           ANSELB equ 018Dh ;# 
+   231  018D                     # 3446 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   232                           ANSELD equ 018Fh ;# 
+   233  018F                     # 3516 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   234                           ANSELE equ 0190h ;# 
+   235  0190                     # 3556 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   236                           EEADR equ 0191h ;# 
+   237  0191                     # 3563 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   238                           EEADRL equ 0191h ;# 
+   239  0191                     # 3583 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   240                           EEADRH equ 0192h ;# 
+   241  0192                     # 3603 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   242                           EEDAT equ 0193h ;# 
+   243  0193                     # 3610 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   244                           EEDATL equ 0193h ;# 
+   245  0193                     # 3615 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   246                           EEDATA equ 0193h ;# 
+   247  0193                     # 3648 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   248                           EEDATH equ 0194h ;# 
+   249  0194                     # 3668 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   250                           EECON1 equ 0195h ;# 
+   251  0195                     # 3730 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   252                           EECON2 equ 0196h ;# 
+   253  0196                     # 3750 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   254                           RCREG equ 0199h ;# 
+   255  0199                     # 3770 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   256                           TXREG equ 019Ah ;# 
+   257  019A                     # 3790 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   258                           SP1BRG equ 019Bh ;# 
+   259  019B                     # 3797 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   260                           SP1BRGL equ 019Bh ;# 
+   261  019B                     # 3802 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   262                           SPBRG equ 019Bh ;# 
+   263  019B                     # 3806 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   264                           SPBRGL equ 019Bh ;# 
+   265  019B                     # 3851 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   266                           SP1BRGH equ 019Ch ;# 
+   267  019C                     # 3856 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   268                           SPBRGH equ 019Ch ;# 
+   269  019C                     # 3889 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   270                           RCSTA equ 019Dh ;# 
+   271  019D                     # 3951 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   272                           TXSTA equ 019Eh ;# 
+   273  019E                     # 4013 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   274                           BAUDCON equ 019Fh ;# 
+   275  019F                     # 4065 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   276                           WPUB equ 020Dh ;# 
+   277  020D                     # 4135 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   278                           WPUE equ 0210h ;# 
+   279  0210                     # 4156 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   280                           SSPBUF equ 0211h ;# 
+   281  0211                     # 4176 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   282                           SSPADD equ 0212h ;# 
+   283  0212                     # 4196 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   284                           SSPMSK equ 0213h ;# 
+   285  0213                     # 4216 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   286                           SSPSTAT equ 0214h ;# 
+   287  0214                     # 4278 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   288                           SSPCON1 equ 0215h ;# 
+   289  0215                     # 4283 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   290                           SSPCON equ 0215h ;# 
+   291  0215                     # 4400 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   292                           SSPCON2 equ 0216h ;# 
+   293  0216                     # 4462 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   294                           SSPCON3 equ 0217h ;# 
+   295  0217                     # 4524 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   296                           CCPR1 equ 0291h ;# 
+   297  0291                     # 4531 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   298                           CCPR1L equ 0291h ;# 
+   299  0291                     # 4551 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   300                           CCPR1H equ 0292h ;# 
+   301  0292                     # 4571 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   302                           CCP1CON equ 0293h ;# 
+   303  0293                     # 4653 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   304                           PWM1CON equ 0294h ;# 
+   305  0294                     # 4715 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   306                           CCP1AS equ 0295h ;# 
+   307  0295                     # 4720 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   308                           ECCP1AS equ 0295h ;# 
+   309  0295                     # 4837 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   310                           PSTR1CON equ 0296h ;# 
+   311  0296                     # 4881 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   312                           CCPR2 equ 0298h ;# 
+   313  0298                     # 4888 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   314                           CCPR2L equ 0298h ;# 
+   315  0298                     # 4908 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   316                           CCPR2H equ 0299h ;# 
+   317  0299                     # 4928 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   318                           CCP2CON equ 029Ah ;# 
+   319  029A                     # 5010 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   320                           PWM2CON equ 029Bh ;# 
+   321  029B                     # 5072 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   322                           CCP2AS equ 029Ch ;# 
+   323  029C                     # 5077 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   324                           ECCP2AS equ 029Ch ;# 
+   325  029C                     # 5194 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   326                           PSTR2CON equ 029Dh ;# 
+   327  029D                     # 5238 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   328                           CCPTMRS0 equ 029Eh ;# 
+   329  029E                     # 5326 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   330                           CCPTMRS1 equ 029Fh ;# 
+   331  029F                     # 5360 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   332                           CCPR3 equ 0311h ;# 
+   333  0311                     # 5367 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   334                           CCPR3L equ 0311h ;# 
+   335  0311                     # 5387 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   336                           CCPR3H equ 0312h ;# 
+   337  0312                     # 5407 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   338                           CCP3CON equ 0313h ;# 
+   339  0313                     # 5469 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   340                           PWM3CON equ 0314h ;# 
+   341  0314                     # 5531 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   342                           CCP3AS equ 0315h ;# 
+   343  0315                     # 5536 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   344                           ECCP3AS equ 0315h ;# 
+   345  0315                     # 5653 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   346                           PSTR3CON equ 0316h ;# 
+   347  0316                     # 5697 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   348                           CCPR4 equ 0318h ;# 
+   349  0318                     # 5704 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   350                           CCPR4L equ 0318h ;# 
+   351  0318                     # 5724 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   352                           CCPR4H equ 0319h ;# 
+   353  0319                     # 5744 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   354                           CCP4CON equ 031Ah ;# 
+   355  031A                     # 5794 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   356                           CCPR5 equ 031Ch ;# 
+   357  031C                     # 5801 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   358                           CCPR5L equ 031Ch ;# 
+   359  031C                     # 5821 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   360                           CCPR5H equ 031Dh ;# 
+   361  031D                     # 5841 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   362                           CCP5CON equ 031Eh ;# 
+   363  031E                     # 5891 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   364                           IOCBP equ 0394h ;# 
+   365  0394                     # 5961 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   366                           IOCBN equ 0395h ;# 
+   367  0395                     # 6031 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   368                           IOCBF equ 0396h ;# 
+   369  0396                     # 6101 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   370                           TMR4 equ 0415h ;# 
+   371  0415                     # 6121 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   372                           PR4 equ 0416h ;# 
+   373  0416                     # 6141 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   374                           T4CON equ 0417h ;# 
+   375  0417                     # 6212 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   376                           TMR6 equ 041Ch ;# 
+   377  041C                     # 6232 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   378                           PR6 equ 041Dh ;# 
+   379  041D                     # 6252 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   380                           T6CON equ 041Eh ;# 
+   381  041E                     # 6323 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   382                           LCDCON equ 0791h ;# 
+   383  0791                     # 6394 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   384                           LCDPS equ 0792h ;# 
+   385  0792                     # 6464 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   386                           LCDREF equ 0793h ;# 
+   387  0793                     # 6516 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   388                           LCDCST equ 0794h ;# 
+   389  0794                     # 6556 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   390                           LCDRL equ 0795h ;# 
+   391  0795                     # 6634 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   392                           LCDSE0 equ 0798h ;# 
+   393  0798                     # 6696 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   394                           LCDSE1 equ 0799h ;# 
+   395  0799                     # 6758 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   396                           LCDSE2 equ 079Ah ;# 
+   397  079A                     # 6820 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   398                           LCDDATA0 equ 07A0h ;# 
+   399  07A0                     # 6882 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   400                           LCDDATA1 equ 07A1h ;# 
+   401  07A1                     # 6944 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   402                           LCDDATA2 equ 07A2h ;# 
+   403  07A2                     # 7006 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   404                           LCDDATA3 equ 07A3h ;# 
+   405  07A3                     # 7068 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   406                           LCDDATA4 equ 07A4h ;# 
+   407  07A4                     # 7130 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   408                           LCDDATA5 equ 07A5h ;# 
+   409  07A5                     # 7192 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   410                           LCDDATA6 equ 07A6h ;# 
+   411  07A6                     # 7254 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   412                           LCDDATA7 equ 07A7h ;# 
+   413  07A7                     # 7316 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   414                           LCDDATA8 equ 07A8h ;# 
+   415  07A8                     # 7378 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   416                           LCDDATA9 equ 07A9h ;# 
+   417  07A9                     # 7440 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   418                           LCDDATA10 equ 07AAh ;# 
+   419  07AA                     # 7502 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   420                           LCDDATA11 equ 07ABh ;# 
+   421  07AB                     # 7564 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   422                           STATUS_SHAD equ 0FE4h ;# 
+   423  0FE4                     # 7596 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   424                           WREG_SHAD equ 0FE5h ;# 
+   425  0FE5                     # 7616 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   426                           BSR_SHAD equ 0FE6h ;# 
+   427  0FE6                     # 7636 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   428                           PCLATH_SHAD equ 0FE7h ;# 
+   429  0FE7                     # 7656 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   430                           FSR0L_SHAD equ 0FE8h ;# 
+   431  0FE8                     # 7676 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   432                           FSR0H_SHAD equ 0FE9h ;# 
+   433  0FE9                     # 7696 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   434                           FSR1L_SHAD equ 0FEAh ;# 
+   435  0FEA                     # 7716 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   436                           FSR1H_SHAD equ 0FEBh ;# 
+   437  0FEB                     # 7736 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   438                           STKPTR equ 0FEDh ;# 
+   439  0FED                     # 7756 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   440                           TOSL equ 0FEEh ;# 
+   441  0FEE                     # 7776 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   442                           TOSH equ 0FEFh ;# 
+   443  0FEF                     # 54 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   444                           INDF0 equ 00h ;# 
+   445  0000                     # 74 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   446                           INDF1 equ 01h ;# 
+   447  0001                     # 94 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   448                           PCL equ 02h ;# 
+   449  0002                     # 114 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   450                           STATUS equ 03h ;# 
+   451  0003                     # 177 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   452                           FSR0L equ 04h ;# 
+   453  0004                     # 197 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   454                           FSR0H equ 05h ;# 
+   455  0005                     # 221 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   456                           FSR1L equ 06h ;# 
+   457  0006                     # 241 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   458                           FSR1H equ 07h ;# 
+   459  0007                     # 261 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   460                           BSR equ 08h ;# 
+   461  0008                     # 313 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   462                           WREG equ 09h ;# 
+   463  0009                     # 333 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   464                           PCLATH equ 0Ah ;# 
+   465  000A                     # 353 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   466                           INTCON equ 0Bh ;# 
+   467  000B                     # 431 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   468                           PORTA equ 0Ch ;# 
+   469  000C                     # 493 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   470                           PORTB equ 0Dh ;# 
+   471  000D                     # 555 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   472                           PORTC equ 0Eh ;# 
+   473  000E                     # 617 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   474                           PORTD equ 0Fh ;# 
+   475  000F                     # 679 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   476                           PORTE equ 010h ;# 
+   477  0010                     # 717 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   478                           PIR1 equ 011h ;# 
+   479  0011                     # 779 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   480                           PIR2 equ 012h ;# 
+   481  0012                     # 836 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   482                           PIR3 equ 013h ;# 
+   483  0013                     # 882 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   484                           TMR0 equ 015h ;# 
+   485  0015                     # 902 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   486                           TMR1 equ 016h ;# 
+   487  0016                     # 909 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   488                           TMR1L equ 016h ;# 
+   489  0016                     # 929 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   490                           TMR1H equ 017h ;# 
+   491  0017                     # 949 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   492                           T1CON equ 018h ;# 
+   493  0018                     # 1021 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   494                           T1GCON equ 019h ;# 
+   495  0019                     # 1098 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   496                           TMR2 equ 01Ah ;# 
+   497  001A                     # 1118 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   498                           PR2 equ 01Bh ;# 
+   499  001B                     # 1138 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   500                           T2CON equ 01Ch ;# 
+   501  001C                     # 1209 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   502                           CPSCON0 equ 01Eh ;# 
+   503  001E                     # 1269 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   504                           CPSCON1 equ 01Fh ;# 
+   505  001F                     # 1315 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   506                           TRISA equ 08Ch ;# 
+   507  008C                     # 1377 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   508                           TRISB equ 08Dh ;# 
+   509  008D                     # 1439 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   510                           TRISC equ 08Eh ;# 
+   511  008E                     # 1501 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   512                           TRISD equ 08Fh ;# 
+   513  008F                     # 1563 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   514                           TRISE equ 090h ;# 
+   515  0090                     # 1601 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   516                           PIE1 equ 091h ;# 
+   517  0091                     # 1663 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   518                           PIE2 equ 092h ;# 
+   519  0092                     # 1720 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   520                           PIE3 equ 093h ;# 
+   521  0093                     # 1766 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   522                           OPTION_REG equ 095h ;# 
+   523  0095                     # 1849 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   524                           PCON equ 096h ;# 
+   525  0096                     # 1900 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   526                           WDTCON equ 097h ;# 
+   527  0097                     # 1959 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   528                           OSCTUNE equ 098h ;# 
+   529  0098                     # 2017 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   530                           OSCCON equ 099h ;# 
+   531  0099                     # 2089 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   532                           OSCSTAT equ 09Ah ;# 
+   533  009A                     # 2151 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   534                           ADRES equ 09Bh ;# 
+   535  009B                     # 2158 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   536                           ADRESL equ 09Bh ;# 
+   537  009B                     # 2178 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   538                           ADRESH equ 09Ch ;# 
+   539  009C                     # 2198 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   540                           ADCON0 equ 09Dh ;# 
+   541  009D                     # 2287 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   542                           ADCON1 equ 09Eh ;# 
+   543  009E                     # 2359 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   544                           LATA equ 010Ch ;# 
+   545  010C                     # 2421 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   546                           LATB equ 010Dh ;# 
+   547  010D                     # 2483 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   548                           LATC equ 010Eh ;# 
+   549  010E                     # 2545 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   550                           LATD equ 010Fh ;# 
+   551  010F                     # 2615 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   552                           LATE equ 0110h ;# 
+   553  0110                     # 2653 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   554                           CM1CON0 equ 0111h ;# 
+   555  0111                     # 2710 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   556                           CM1CON1 equ 0112h ;# 
+   557  0112                     # 2776 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   558                           CM2CON0 equ 0113h ;# 
+   559  0113                     # 2833 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   560                           CM2CON1 equ 0114h ;# 
+   561  0114                     # 2899 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   562                           CMOUT equ 0115h ;# 
+   563  0115                     # 2925 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   564                           BORCON equ 0116h ;# 
+   565  0116                     # 2952 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   566                           FVRCON equ 0117h ;# 
+   567  0117                     # 3028 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   568                           DACCON0 equ 0118h ;# 
+   569  0118                     # 3089 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   570                           DACCON1 equ 0119h ;# 
+   571  0119                     # 3141 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   572                           SRCON0 equ 011Ah ;# 
+   573  011A                     # 3212 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   574                           SRCON1 equ 011Bh ;# 
+   575  011B                     # 3274 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   576                           APFCON equ 011Dh ;# 
+   577  011D                     # 3330 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   578                           ANSELA equ 018Ch ;# 
+   579  018C                     # 3388 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   580                           ANSELB equ 018Dh ;# 
+   581  018D                     # 3446 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   582                           ANSELD equ 018Fh ;# 
+   583  018F                     # 3516 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   584                           ANSELE equ 0190h ;# 
+   585  0190                     # 3556 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   586                           EEADR equ 0191h ;# 
+   587  0191                     # 3563 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   588                           EEADRL equ 0191h ;# 
+   589  0191                     # 3583 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   590                           EEADRH equ 0192h ;# 
+   591  0192                     # 3603 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   592                           EEDAT equ 0193h ;# 
+   593  0193                     # 3610 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   594                           EEDATL equ 0193h ;# 
+   595  0193                     # 3615 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   596                           EEDATA equ 0193h ;# 
+   597  0193                     # 3648 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   598                           EEDATH equ 0194h ;# 
+   599  0194                     # 3668 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   600                           EECON1 equ 0195h ;# 
+   601  0195                     # 3730 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   602                           EECON2 equ 0196h ;# 
+   603  0196                     # 3750 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   604                           RCREG equ 0199h ;# 
+   605  0199                     # 3770 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   606                           TXREG equ 019Ah ;# 
+   607  019A                     # 3790 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   608                           SP1BRG equ 019Bh ;# 
+   609  019B                     # 3797 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   610                           SP1BRGL equ 019Bh ;# 
+   611  019B                     # 3802 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   612                           SPBRG equ 019Bh ;# 
+   613  019B                     # 3806 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   614                           SPBRGL equ 019Bh ;# 
+   615  019B                     # 3851 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   616                           SP1BRGH equ 019Ch ;# 
+   617  019C                     # 3856 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   618                           SPBRGH equ 019Ch ;# 
+   619  019C                     # 3889 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   620                           RCSTA equ 019Dh ;# 
+   621  019D                     # 3951 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   622                           TXSTA equ 019Eh ;# 
+   623  019E                     # 4013 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   624                           BAUDCON equ 019Fh ;# 
+   625  019F                     # 4065 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   626                           WPUB equ 020Dh ;# 
+   627  020D                     # 4135 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   628                           WPUE equ 0210h ;# 
+   629  0210                     # 4156 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   630                           SSPBUF equ 0211h ;# 
+   631  0211                     # 4176 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   632                           SSPADD equ 0212h ;# 
+   633  0212                     # 4196 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   634                           SSPMSK equ 0213h ;# 
+   635  0213                     # 4216 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   636                           SSPSTAT equ 0214h ;# 
+   637  0214                     # 4278 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   638                           SSPCON1 equ 0215h ;# 
+   639  0215                     # 4283 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   640                           SSPCON equ 0215h ;# 
+   641  0215                     # 4400 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   642                           SSPCON2 equ 0216h ;# 
+   643  0216                     # 4462 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   644                           SSPCON3 equ 0217h ;# 
+   645  0217                     # 4524 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   646                           CCPR1 equ 0291h ;# 
+   647  0291                     # 4531 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   648                           CCPR1L equ 0291h ;# 
+   649  0291                     # 4551 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   650                           CCPR1H equ 0292h ;# 
+   651  0292                     # 4571 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   652                           CCP1CON equ 0293h ;# 
+   653  0293                     # 4653 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   654                           PWM1CON equ 0294h ;# 
+   655  0294                     # 4715 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   656                           CCP1AS equ 0295h ;# 
+   657  0295                     # 4720 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   658                           ECCP1AS equ 0295h ;# 
+   659  0295                     # 4837 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   660                           PSTR1CON equ 0296h ;# 
+   661  0296                     # 4881 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   662                           CCPR2 equ 0298h ;# 
+   663  0298                     # 4888 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   664                           CCPR2L equ 0298h ;# 
+   665  0298                     # 4908 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   666                           CCPR2H equ 0299h ;# 
+   667  0299                     # 4928 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   668                           CCP2CON equ 029Ah ;# 
+   669  029A                     # 5010 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   670                           PWM2CON equ 029Bh ;# 
+   671  029B                     # 5072 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   672                           CCP2AS equ 029Ch ;# 
+   673  029C                     # 5077 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   674                           ECCP2AS equ 029Ch ;# 
+   675  029C                     # 5194 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   676                           PSTR2CON equ 029Dh ;# 
+   677  029D                     # 5238 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   678                           CCPTMRS0 equ 029Eh ;# 
+   679  029E                     # 5326 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   680                           CCPTMRS1 equ 029Fh ;# 
+   681  029F                     # 5360 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   682                           CCPR3 equ 0311h ;# 
+   683  0311                     # 5367 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   684                           CCPR3L equ 0311h ;# 
+   685  0311                     # 5387 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   686                           CCPR3H equ 0312h ;# 
+   687  0312                     # 5407 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   688                           CCP3CON equ 0313h ;# 
+   689  0313                     # 5469 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   690                           PWM3CON equ 0314h ;# 
+   691  0314                     # 5531 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   692                           CCP3AS equ 0315h ;# 
+   693  0315                     # 5536 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   694                           ECCP3AS equ 0315h ;# 
+   695  0315                     # 5653 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   696                           PSTR3CON equ 0316h ;# 
+   697  0316                     # 5697 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   698                           CCPR4 equ 0318h ;# 
+   699  0318                     # 5704 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   700                           CCPR4L equ 0318h ;# 
+   701  0318                     # 5724 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   702                           CCPR4H equ 0319h ;# 
+   703  0319                     # 5744 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   704                           CCP4CON equ 031Ah ;# 
+   705  031A                     # 5794 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   706                           CCPR5 equ 031Ch ;# 
+   707  031C                     # 5801 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   708                           CCPR5L equ 031Ch ;# 
+   709  031C                     # 5821 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   710                           CCPR5H equ 031Dh ;# 
+   711  031D                     # 5841 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   712                           CCP5CON equ 031Eh ;# 
+   713  031E                     # 5891 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   714                           IOCBP equ 0394h ;# 
+   715  0394                     # 5961 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   716                           IOCBN equ 0395h ;# 
+   717  0395                     # 6031 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   718                           IOCBF equ 0396h ;# 
+   719  0396                     # 6101 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   720                           TMR4 equ 0415h ;# 
+   721  0415                     # 6121 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   722                           PR4 equ 0416h ;# 
+   723  0416                     # 6141 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   724                           T4CON equ 0417h ;# 
+   725  0417                     # 6212 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   726                           TMR6 equ 041Ch ;# 
+   727  041C                     # 6232 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   728                           PR6 equ 041Dh ;# 
+   729  041D                     # 6252 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   730                           T6CON equ 041Eh ;# 
+   731  041E                     # 6323 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   732                           LCDCON equ 0791h ;# 
+   733  0791                     # 6394 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   734                           LCDPS equ 0792h ;# 
+   735  0792                     # 6464 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   736                           LCDREF equ 0793h ;# 
+   737  0793                     # 6516 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   738                           LCDCST equ 0794h ;# 
+   739  0794                     # 6556 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   740                           LCDRL equ 0795h ;# 
+   741  0795                     # 6634 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   742                           LCDSE0 equ 0798h ;# 
+   743  0798                     # 6696 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   744                           LCDSE1 equ 0799h ;# 
+   745  0799                     # 6758 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   746                           LCDSE2 equ 079Ah ;# 
+   747  079A                     # 6820 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   748                           LCDDATA0 equ 07A0h ;# 
+   749  07A0                     # 6882 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   750                           LCDDATA1 equ 07A1h ;# 
+   751  07A1                     # 6944 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   752                           LCDDATA2 equ 07A2h ;# 
+   753  07A2                     # 7006 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   754                           LCDDATA3 equ 07A3h ;# 
+   755  07A3                     # 7068 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   756                           LCDDATA4 equ 07A4h ;# 
+   757  07A4                     # 7130 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   758                           LCDDATA5 equ 07A5h ;# 
+   759  07A5                     # 7192 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   760                           LCDDATA6 equ 07A6h ;# 
+   761  07A6                     # 7254 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   762                           LCDDATA7 equ 07A7h ;# 
+   763  07A7                     # 7316 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   764                           LCDDATA8 equ 07A8h ;# 
+   765  07A8                     # 7378 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   766                           LCDDATA9 equ 07A9h ;# 
+   767  07A9                     # 7440 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   768                           LCDDATA10 equ 07AAh ;# 
+   769  07AA                     # 7502 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   770                           LCDDATA11 equ 07ABh ;# 
+   771  07AB                     # 7564 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   772                           STATUS_SHAD equ 0FE4h ;# 
+   773  0FE4                     # 7596 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   774                           WREG_SHAD equ 0FE5h ;# 
+   775  0FE5                     # 7616 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   776                           BSR_SHAD equ 0FE6h ;# 
+   777  0FE6                     # 7636 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   778                           PCLATH_SHAD equ 0FE7h ;# 
+   779  0FE7                     # 7656 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   780                           FSR0L_SHAD equ 0FE8h ;# 
+   781  0FE8                     # 7676 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   782                           FSR0H_SHAD equ 0FE9h ;# 
+   783  0FE9                     # 7696 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   784                           FSR1L_SHAD equ 0FEAh ;# 
+   785  0FEA                     # 7716 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   786                           FSR1H_SHAD equ 0FEBh ;# 
+   787  0FEB                     # 7736 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   788                           STKPTR equ 0FEDh ;# 
+   789  0FED                     # 7756 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   790                           TOSL equ 0FEEh ;# 
+   791  0FEE                     # 7776 "C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h"
+   792                           TOSH equ 0FEFh ;# 
+   793  0FEF                     	FNROOT	_main
+   794                           	global	_TRISB
+   795                           _TRISB	set	0x8D
+   796  008D                     	global	_TRISD
+   797                           _TRISD	set	0x8F
+   798  008F                     	global	_LATB
+   799                           _LATB	set	0x10D
+   800  010D                     	global	_LATD
+   801                           _LATD	set	0x10F
+   802  010F                     	global	_ANSELB
+   803                           _ANSELB	set	0x18D
+   804  018D                     	global	_ANSELD
+   805                           _ANSELD	set	0x18F
+   806  018F                     ; #config settings
+   807                           global __CFG_FOSC$ECH
+   808                           __CFG_FOSC$ECH equ 0x0
+   809  0000                     global __CFG_WDTE$ON
+   810                           __CFG_WDTE$ON equ 0x0
+   811  0000                     global __CFG_PWRTE$OFF
+   812                           __CFG_PWRTE$OFF equ 0x0
+   813  0000                     global __CFG_MCLRE$ON
+   814                           __CFG_MCLRE$ON equ 0x0
+   815  0000                     global __CFG_CP$OFF
+   816                           __CFG_CP$OFF equ 0x0
+   817  0000                     global __CFG_CPD$OFF
+   818                           __CFG_CPD$OFF equ 0x0
+   819  0000                     global __CFG_BOREN$ON
+   820                           __CFG_BOREN$ON equ 0x0
+   821  0000                     global __CFG_CLKOUTEN$OFF
+   822                           __CFG_CLKOUTEN$OFF equ 0x0
+   823  0000                     global __CFG_IESO$ON
+   824                           __CFG_IESO$ON equ 0x0
+   825  0000                     global __CFG_FCMEN$ON
+   826                           __CFG_FCMEN$ON equ 0x0
+   827  0000                     global __CFG_WRT$OFF
+   828                           __CFG_WRT$OFF equ 0x0
+   829  0000                     global __CFG_VCAPEN$OFF
+   830                           __CFG_VCAPEN$OFF equ 0x0
+   831  0000                     global __CFG_PLLEN$OFF
+   832                           __CFG_PLLEN$OFF equ 0x0
+   833  0000                     global __CFG_STVREN$ON
+   834                           __CFG_STVREN$ON equ 0x0
+   835  0000                     global __CFG_BORV$LO
+   836                           __CFG_BORV$LO equ 0x0
+   837  0000                     global __CFG_LVP$OFF
+   838                           __CFG_LVP$OFF equ 0x0
+   839  0000                     	file	"C:\Users\c08227\AppData\Local\Temp\sai0."
+   840                           	line	#
+   841                           psect cinit,class=CODE,delta=2
+   842                           global start_initialization
+   843                           start_initialization:
+   844  07FD                     
+   845                           global __initialization
+   846                           __initialization:
+   847  07FD                     psect cinit,class=CODE,delta=2,merge=1
+   848                           global end_of_initialization,__end_of__initialization
+   849                           
+   850                           ;End of C runtime variable initialization code
+   851                           
+   852                           end_of_initialization:
+   853  07FD                     __end_of__initialization:
+   854  07FD                     movlb 0
+   855  07FD  0020               ljmp _main	;jump to C main() function
+   856  07FE  3187  2FEC         psect	cstackCOMMON,class=COMMON,space=1,noexec
+   857                           global __pcstackCOMMON
+   858                           __pcstackCOMMON:
+   859  0000                     ?_main:	; 1 bytes @ 0x0
+   860  0000                     ??_main:	; 1 bytes @ 0x0
+   861  0000                     ;!
+   862                           ;!Data Sizes:
+   863                           ;!    Strings     0
+   864                           ;!    Constant    0
+   865                           ;!    Data        0
+   866                           ;!    BSS         0
+   867                           ;!    Persistent  0
+   868                           ;!    Stack       0
+   869                           ;!
+   870                           ;!Auto Spaces:
+   871                           ;!    Space          Size  Autos    Used
+   872                           ;!    COMMON           14      0       0
+   873                           ;!    BANK0            80      0       0
+   874                           ;!    BANK1            80      0       0
+   875                           ;!    BANK2            80      0       0
+   876                           ;!    BANK3            80      0       0
+   877                           ;!    BANK4            80      0       0
+   878                           ;!    BANK5            80      0       0
+   879                           ;!    BANK6            80      0       0
+   880                           ;!    BANK7            80      0       0
+   881                           ;!    BANK8            80      0       0
+   882                           ;!    BANK9            80      0       0
+   883                           ;!    BANK10           80      0       0
+   884                           ;!    BANK11           80      0       0
+   885                           ;!    BANK12           48      0       0
+   886                           
+   887                           ;!
+   888                           ;!Pointer List with Targets:
+   889                           ;!
+   890                           ;!    None.
+   891                           
+   892                           
+   893                           ;!
+   894                           ;!Critical Paths under _main in COMMON
+   895                           ;!
+   896                           ;!    None.
+   897                           ;!
+   898                           ;!Critical Paths under _main in BANK0
+   899                           ;!
+   900                           ;!    None.
+   901                           ;!
+   902                           ;!Critical Paths under _main in BANK1
+   903                           ;!
+   904                           ;!    None.
+   905                           ;!
+   906                           ;!Critical Paths under _main in BANK2
+   907                           ;!
+   908                           ;!    None.
+   909                           ;!
+   910                           ;!Critical Paths under _main in BANK3
+   911                           ;!
+   912                           ;!    None.
+   913                           ;!
+   914                           ;!Critical Paths under _main in BANK4
+   915                           ;!
+   916                           ;!    None.
+   917                           ;!
+   918                           ;!Critical Paths under _main in BANK5
+   919                           ;!
+   920                           ;!    None.
+   921                           ;!
+   922                           ;!Critical Paths under _main in BANK6
+   923                           ;!
+   924                           ;!    None.
+   925                           ;!
+   926                           ;!Critical Paths under _main in BANK7
+   927                           ;!
+   928                           ;!    None.
+   929                           ;!
+   930                           ;!Critical Paths under _main in BANK8
+   931                           ;!
+   932                           ;!    None.
+   933                           ;!
+   934                           ;!Critical Paths under _main in BANK9
+   935                           ;!
+   936                           ;!    None.
+   937                           ;!
+   938                           ;!Critical Paths under _main in BANK10
+   939                           ;!
+   940                           ;!    None.
+   941                           ;!
+   942                           ;!Critical Paths under _main in BANK11
+   943                           ;!
+   944                           ;!    None.
+   945                           ;!
+   946                           ;!Critical Paths under _main in BANK12
+   947                           ;!
+   948                           ;!    None.
+   949                           
+   950 ;;
+   951 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   952 ;;
+   953                           
+   954                           ;!
+   955                           ;!Call Graph Tables:
+   956                           ;!
+   957                           ;! ---------------------------------------------------------------------------------
+   958                           ;! (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+   959                           ;! ---------------------------------------------------------------------------------
+   960                           ;! (0) _main                                                 0     0      0       0
+   961                           ;! ---------------------------------------------------------------------------------
+   962                           ;! Estimated maximum stack depth 0
+   963                           ;! ---------------------------------------------------------------------------------
+   964                           ;!
+   965                           ;! Call Graph Graphs:
+   966                           ;!
+   967                           ;! _main (ROOT)
+   968                           ;!
+   969                           
+   970                           ;! Address spaces:
+   971                           
+   972                           ;!Name               Size   Autos  Total    Cost      Usage
+   973                           ;!BIGRAM             3F0      0       0       0        0.0%
+   974                           ;!EEDATA             100      0       0       0        0.0%
+   975                           ;!NULL                 0      0       0       0        0.0%
+   976                           ;!CODE                 0      0       0       0        0.0%
+   977                           ;!BITCOMMON            E      0       0       1        0.0%
+   978                           ;!BITSFR0              0      0       0       1        0.0%
+   979                           ;!SFR0                 0      0       0       1        0.0%
+   980                           ;!COMMON               E      0       0       2        0.0%
+   981                           ;!BITSFR1              0      0       0       2        0.0%
+   982                           ;!SFR1                 0      0       0       2        0.0%
+   983                           ;!BITSFR2              0      0       0       3        0.0%
+   984                           ;!SFR2                 0      0       0       3        0.0%
+   985                           ;!STACK                0      0       0       3        0.0%
+   986                           ;!BITBANK0            50      0       0       4        0.0%
+   987                           ;!BITSFR3              0      0       0       4        0.0%
+   988                           ;!SFR3                 0      0       0       4        0.0%
+   989                           ;!BANK0               50      0       0       5        0.0%
+   990                           ;!BITSFR4              0      0       0       5        0.0%
+   991                           ;!SFR4                 0      0       0       5        0.0%
+   992                           ;!BITBANK1            50      0       0       6        0.0%
+   993                           ;!BITSFR5              0      0       0       6        0.0%
+   994                           ;!SFR5                 0      0       0       6        0.0%
+   995                           ;!BANK1               50      0       0       7        0.0%
+   996                           ;!BITSFR6              0      0       0       7        0.0%
+   997                           ;!SFR6                 0      0       0       7        0.0%
+   998                           ;!BITBANK2            50      0       0       8        0.0%
+   999                           ;!BITSFR7              0      0       0       8        0.0%
+  1000                           ;!SFR7                 0      0       0       8        0.0%
+  1001                           ;!BANK2               50      0       0       9        0.0%
+  1002                           ;!BITSFR8              0      0       0       9        0.0%
+  1003                           ;!SFR8                 0      0       0       9        0.0%
+  1004                           ;!BITBANK3            50      0       0      10        0.0%
+  1005                           ;!BITSFR9              0      0       0      10        0.0%
+  1006                           ;!SFR9                 0      0       0      10        0.0%
+  1007                           ;!BANK3               50      0       0      11        0.0%
+  1008                           ;!BITSFR10             0      0       0      11        0.0%
+  1009                           ;!SFR10                0      0       0      11        0.0%
+  1010                           ;!BITBANK4            50      0       0      12        0.0%
+  1011                           ;!BITSFR11             0      0       0      12        0.0%
+  1012                           ;!SFR11                0      0       0      12        0.0%
+  1013                           ;!BANK4               50      0       0      13        0.0%
+  1014                           ;!BITSFR12             0      0       0      13        0.0%
+  1015                           ;!SFR12                0      0       0      13        0.0%
+  1016                           ;!BITBANK5            50      0       0      14        0.0%
+  1017                           ;!BITSFR13             0      0       0      14        0.0%
+  1018                           ;!SFR13                0      0       0      14        0.0%
+  1019                           ;!BANK5               50      0       0      15        0.0%
+  1020                           ;!BITSFR14             0      0       0      15        0.0%
+  1021                           ;!SFR14                0      0       0      15        0.0%
+  1022                           ;!BITBANK6            50      0       0      16        0.0%
+  1023                           ;!BITSFR15             0      0       0      16        0.0%
+  1024                           ;!SFR15                0      0       0      16        0.0%
+  1025                           ;!BANK6               50      0       0      17        0.0%
+  1026                           ;!BITSFR16             0      0       0      17        0.0%
+  1027                           ;!SFR16                0      0       0      17        0.0%
+  1028                           ;!BITBANK7            50      0       0      18        0.0%
+  1029                           ;!BITSFR17             0      0       0      18        0.0%
+  1030                           ;!SFR17                0      0       0      18        0.0%
+  1031                           ;!BANK7               50      0       0      19        0.0%
+  1032                           ;!BITSFR18             0      0       0      19        0.0%
+  1033                           ;!SFR18                0      0       0      19        0.0%
+  1034                           ;!BITSFR19             0      0       0      20        0.0%
+  1035                           ;!SFR19                0      0       0      20        0.0%
+  1036                           ;!ABS                  0      0       0      20        0.0%
+  1037                           ;!BITBANK8            50      0       0      21        0.0%
+  1038                           ;!BITSFR20             0      0       0      21        0.0%
+  1039                           ;!SFR20                0      0       0      21        0.0%
+  1040                           ;!BANK8               50      0       0      22        0.0%
+  1041                           ;!BITSFR21             0      0       0      22        0.0%
+  1042                           ;!SFR21                0      0       0      22        0.0%
+  1043                           ;!BITBANK9            50      0       0      23        0.0%
+  1044                           ;!BITSFR22             0      0       0      23        0.0%
+  1045                           ;!SFR22                0      0       0      23        0.0%
+  1046                           ;!BANK9               50      0       0      24        0.0%
+  1047                           ;!BITSFR23             0      0       0      24        0.0%
+  1048                           ;!SFR23                0      0       0      24        0.0%
+  1049                           ;!BITBANK10           50      0       0      25        0.0%
+  1050                           ;!BITSFR24             0      0       0      25        0.0%
+  1051                           ;!SFR24                0      0       0      25        0.0%
+  1052                           ;!BANK10              50      0       0      26        0.0%
+  1053                           ;!BITSFR25             0      0       0      26        0.0%
+  1054                           ;!SFR25                0      0       0      26        0.0%
+  1055                           ;!BITBANK11           50      0       0      27        0.0%
+  1056                           ;!BITSFR26             0      0       0      27        0.0%
+  1057                           ;!SFR26                0      0       0      27        0.0%
+  1058                           ;!BANK11              50      0       0      28        0.0%
+  1059                           ;!BITSFR27             0      0       0      28        0.0%
+  1060                           ;!SFR27                0      0       0      28        0.0%
+  1061                           ;!BITBANK12           30      0       0      29        0.0%
+  1062                           ;!BITSFR28             0      0       0      29        0.0%
+  1063                           ;!SFR28                0      0       0      29        0.0%
+  1064                           ;!BANK12              30      0       0      30        0.0%
+  1065                           ;!BITSFR29             0      0       0      30        0.0%
+  1066                           ;!SFR29                0      0       0      30        0.0%
+  1067                           ;!BITSFR30             0      0       0      31        0.0%
+  1068                           ;!SFR30                0      0       0      31        0.0%
+  1069                           ;!DATA                 0      0       0      31        0.0%
+  1070                           ;!BITSFR31             0      0       0      32        0.0%
+  1071                           ;!SFR31                0      0       0      32        0.0%
+  1072                           
+  1073                           	global	_main
+  1074                           
+  1075 ;; *************** function _main *****************
+  1076 ;; Defined at:
+  1077 ;;		line 30 in file "example1a.c"
+  1078 ;; Parameters:    Size  Location     Type
+  1079 ;;		None
+  1080 ;; Auto vars:     Size  Location     Type
+  1081 ;;		None
+  1082 ;; Return value:  Size  Location     Type
+  1083 ;;                  1    wreg      void 
+  1084 ;; Registers used:
+  1085 ;;		wreg, status,2
+  1086 ;; Tracked objects:
+  1087 ;;		On entry : B1F/0
+  1088 ;;		On exit  : 0/0
+  1089 ;;		Unchanged: 0/0
+  1090 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+       1  BANK12
+  1091 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+       0       0
+  1092 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+       0       0
+  1093 ;;      Temps:          0       0       0       0       0       0       0       0       0       0       0       0       
+       0       0
+  1094 ;;      Totals:         0       0       0       0       0       0       0       0       0       0       0       0       
+       0       0
+  1095 ;;Total ram usage:        0 bytes
+  1096 ;; This function calls:
+  1097 ;;		Nothing
+  1098 ;; This function is called by:
+  1099 ;;		Startup code after reset
+  1100 ;; This function uses a non-reentrant model
+  1101 ;;
+  1102                           psect	maintext,global,class=CODE,delta=2,merge=1,split=1,group=0
+  1103                           	file	"example1a.c"
+  1104                           	line	30
+  1105                           global __pmaintext
+  1106                           __pmaintext:	;psect for function _main
+  1107  07EC                     psect	maintext
+  1108                           	file	"example1a.c"
+  1109                           	line	30
+  1110                           	global	__size_of_main
+  1111                           	__size_of_main	equ	__end_of_main-_main
+  1112  0011                     	
+  1113                           _main:	
+  1114  07EC                     ;incstack = 0
+  1115                           	opt	stack 16
+  1116                           ; Regs used in _main: [wreg+status,2]
+  1117                           	line	36
+  1118                           	
+  1119                           l542:	
+  1120  07EC                     ;example1a.c: 36:     ANSELD = 0x0;
+  1121                           	movlb 3	; select bank3
+  1122  07EC  0023               	clrf	(399)^0180h	;volatile
+  1123  07ED  018F               	line	37
+  1124                           ;example1a.c: 37:     TRISD = 0x0;
+  1125                           	movlb 1	; select bank1
+  1126  07EE  0021               	clrf	(143)^080h	;volatile
+  1127  07EF  018F               	line	38
+  1128                           	
+  1129                           l544:	
+  1130  07F0                     ;example1a.c: 38:     LATD = ON_OFF;
+  1131                           	movlw	low(055h)
+  1132  07F0  3055               	movlb 2	; select bank2
+  1133  07F1  0022               	movwf	(271)^0100h	;volatile
+  1134  07F2  008F               	line	41
+  1135                           	
+  1136                           l546:	
+  1137  07F3                     ;example1a.c: 41:     ANSELB = 0x0;
+  1138                           	movlb 3	; select bank3
+  1139  07F3  0023               	clrf	(397)^0180h	;volatile
+  1140  07F4  018D               	line	42
+  1141                           	
+  1142                           l548:	
+  1143  07F5                     ;example1a.c: 42:     TRISB = 0x0;
+  1144                           	movlb 1	; select bank1
+  1145  07F5  0021               	clrf	(141)^080h	;volatile
+  1146  07F6  018D               	line	43
+  1147                           	
+  1148                           l550:	
+  1149  07F7                     ;example1a.c: 43:     LATB = ON_OFF;
+  1150                           	movlw	low(055h)
+  1151  07F7  3055               	movlb 2	; select bank2
+  1152  07F8  0022               	movwf	(269)^0100h	;volatile
+  1153  07F9  008D               	goto	l17
+  1154  07FA  2FFB               	line	45
+  1155                           	
+  1156                           l552:	
+  1157  07FB                     	line	46
+  1158                           ;example1a.c: 45:     return;
+  1159                           	
+  1160                           l17:	
+  1161  07FB                     	global	start
+  1162                           	ljmp	start
+  1163  07FB  3180  2802         	opt stack 0
+  1164                           GLOBAL	__end_of_main
+  1165                           	__end_of_main:
+  1166  07FD                     	signat	_main,89
+  1167                           global	___latbits
+  1168                           ___latbits	equ	3
+  1169  0003                     	global	btemp
+  1170                           	btemp set 07Eh
+  1171  007E                     
+  1172                           	DABS	1,126,2	;btemp
+  1173                           	global	wtemp0
+  1174                           	wtemp0 set btemp+0
+  1175  007E                     	end
+
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        0
+    BSS         0
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMMON           14      0       0
+    BANK0            80      0       0
+    BANK1            80      0       0
+    BANK2            80      0       0
+    BANK3            80      0       0
+    BANK4            80      0       0
+    BANK5            80      0       0
+    BANK6            80      0       0
+    BANK7            80      0       0
+    BANK8            80      0       0
+    BANK9            80      0       0
+    BANK10           80      0       0
+    BANK11           80      0       0
+    BANK12           48      0       0
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMMON
+
+    None.
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _main in BANK4
+
+    None.
+
+Critical Paths under _main in BANK5
+
+    None.
+
+Critical Paths under _main in BANK6
+
+    None.
+
+Critical Paths under _main in BANK7
+
+    None.
+
+Critical Paths under _main in BANK8
+
+    None.
+
+Critical Paths under _main in BANK9
+
+    None.
+
+Critical Paths under _main in BANK10
+
+    None.
+
+Critical Paths under _main in BANK11
+
+    None.
+
+Critical Paths under _main in BANK12
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 0     0      0       0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 0
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BIGRAM             3F0      0       0       0        0.0%
+EEDATA             100      0       0       0        0.0%
+NULL                 0      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+BITCOMMON            E      0       0       1        0.0%
+BITSFR0              0      0       0       1        0.0%
+SFR0                 0      0       0       1        0.0%
+COMMON               E      0       0       2        0.0%
+BITSFR1              0      0       0       2        0.0%
+SFR1                 0      0       0       2        0.0%
+BITSFR2              0      0       0       3        0.0%
+SFR2                 0      0       0       3        0.0%
+STACK                0      0       0       3        0.0%
+BITBANK0            50      0       0       4        0.0%
+BITSFR3              0      0       0       4        0.0%
+SFR3                 0      0       0       4        0.0%
+BANK0               50      0       0       5        0.0%
+BITSFR4              0      0       0       5        0.0%
+SFR4                 0      0       0       5        0.0%
+BITBANK1            50      0       0       6        0.0%
+BITSFR5              0      0       0       6        0.0%
+SFR5                 0      0       0       6        0.0%
+BANK1               50      0       0       7        0.0%
+BITSFR6              0      0       0       7        0.0%
+SFR6                 0      0       0       7        0.0%
+BITBANK2            50      0       0       8        0.0%
+BITSFR7              0      0       0       8        0.0%
+SFR7                 0      0       0       8        0.0%
+BANK2               50      0       0       9        0.0%
+BITSFR8              0      0       0       9        0.0%
+SFR8                 0      0       0       9        0.0%
+BITBANK3            50      0       0      10        0.0%
+BITSFR9              0      0       0      10        0.0%
+SFR9                 0      0       0      10        0.0%
+BANK3               50      0       0      11        0.0%
+BITSFR10             0      0       0      11        0.0%
+SFR10                0      0       0      11        0.0%
+BITBANK4            50      0       0      12        0.0%
+BITSFR11             0      0       0      12        0.0%
+SFR11                0      0       0      12        0.0%
+BANK4               50      0       0      13        0.0%
+BITSFR12             0      0       0      13        0.0%
+SFR12                0      0       0      13        0.0%
+BITBANK5            50      0       0      14        0.0%
+BITSFR13             0      0       0      14        0.0%
+SFR13                0      0       0      14        0.0%
+BANK5               50      0       0      15        0.0%
+BITSFR14             0      0       0      15        0.0%
+SFR14                0      0       0      15        0.0%
+BITBANK6            50      0       0      16        0.0%
+BITSFR15             0      0       0      16        0.0%
+SFR15                0      0       0      16        0.0%
+BANK6               50      0       0      17        0.0%
+BITSFR16             0      0       0      17        0.0%
+SFR16                0      0       0      17        0.0%
+BITBANK7            50      0       0      18        0.0%
+BITSFR17             0      0       0      18        0.0%
+SFR17                0      0       0      18        0.0%
+BANK7               50      0       0      19        0.0%
+BITSFR18             0      0       0      19        0.0%
+SFR18                0      0       0      19        0.0%
+BITSFR19             0      0       0      20        0.0%
+SFR19                0      0       0      20        0.0%
+ABS                  0      0       0      20        0.0%
+BITBANK8            50      0       0      21        0.0%
+BITSFR20             0      0       0      21        0.0%
+SFR20                0      0       0      21        0.0%
+BANK8               50      0       0      22        0.0%
+BITSFR21             0      0       0      22        0.0%
+SFR21                0      0       0      22        0.0%
+BITBANK9            50      0       0      23        0.0%
+BITSFR22             0      0       0      23        0.0%
+SFR22                0      0       0      23        0.0%
+BANK9               50      0       0      24        0.0%
+BITSFR23             0      0       0      24        0.0%
+SFR23                0      0       0      24        0.0%
+BITBANK10           50      0       0      25        0.0%
+BITSFR24             0      0       0      25        0.0%
+SFR24                0      0       0      25        0.0%
+BANK10              50      0       0      26        0.0%
+BITSFR25             0      0       0      26        0.0%
+SFR25                0      0       0      26        0.0%
+BITBANK11           50      0       0      27        0.0%
+BITSFR26             0      0       0      27        0.0%
+SFR26                0      0       0      27        0.0%
+BANK11              50      0       0      28        0.0%
+BITSFR27             0      0       0      28        0.0%
+SFR27                0      0       0      28        0.0%
+BITBANK12           30      0       0      29        0.0%
+BITSFR28             0      0       0      29        0.0%
+SFR28                0      0       0      29        0.0%
+BANK12              30      0       0      30        0.0%
+BITSFR29             0      0       0      30        0.0%
+SFR29                0      0       0      30        0.0%
+BITSFR30             0      0       0      31        0.0%
+SFR30                0      0       0      31        0.0%
+DATA                 0      0       0      31        0.0%
+BITSFR31             0      0       0      32        0.0%
+SFR31                0      0       0      32        0.0%
+
+
+Microchip Technology PIC Macro Assembler V2.00 build -1524193055 
+Symbol Table                                                                                   Thu Dec 13 17:24:47 2018
+
+            __CFG_CP$OFF 0000                       l17 07FB                      l550 07F7  
+                    l542 07EC                      l552 07FB                      l544 07F0  
+                    l546 07F3                      l548 07F5             __CFG_CPD$OFF 0000  
+           __CFG_BORV$LO 0000             __CFG_IESO$ON 0000             __CFG_LVP$OFF 0000  
+           __CFG_WDTE$ON 0000                     _LATB 010D                     _LATD 010F  
+           __CFG_WRT$OFF 0000            __CFG_FCMEN$ON 0000                     _main 07EC  
+                   btemp 007E            __CFG_BOREN$ON 0000                     start 0002  
+          __CFG_FOSC$ECH 0000            __CFG_MCLRE$ON 0000                    ?_main 0000  
+                  _TRISB 008D                    _TRISD 008F                    wtemp0 007E  
+        __initialization 07FD             __end_of_main 07FD                   ??_main 0000  
+         __CFG_PLLEN$OFF 0000                   _ANSELB 018D                   _ANSELD 018F  
+         __CFG_PWRTE$OFF 0000           __CFG_STVREN$ON 0000  __end_of__initialization 07FD  
+         __pcstackCOMMON 0000          __CFG_VCAPEN$OFF 0000               __pmaintext 07EC  
+   end_of_initialization 07FD      start_initialization 07FD                ___latbits 0003  
+          __size_of_main 0011        __CFG_CLKOUTEN$OFF 0000  

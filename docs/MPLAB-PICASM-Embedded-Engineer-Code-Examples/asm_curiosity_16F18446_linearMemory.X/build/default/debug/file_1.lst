@@ -1,0 +1,187 @@
+
+
+Microchip MPLAB XC8 Assembler V2.32 build 20210114182548 
+                                                                                                           Tue Mar  9 09:14:28 2021
+
+
+     1                           	processor	16F18446
+     2                           	pagewidth 132
+     3                           	psect	udata_shr,global,class=COMMON,space=1,delta=1,noexec
+     4                           	psect	udata,global,class=RAM,space=1,delta=1,noexec
+     5                           	psect	udata_bank0,global,class=BANK0,space=1,delta=1,noexec
+     6                           	psect	udata_bank1,global,class=BANK1,space=1,delta=1,noexec
+     7                           	psect	udata_bank2,global,class=BANK2,space=1,delta=1,noexec
+     8                           	psect	udata_bank3,global,class=BANK3,space=1,delta=1,noexec
+     9                           	psect	udata_bank4,global,class=BANK4,space=1,delta=1,noexec
+    10                           	psect	udata_bank5,global,class=BANK5,space=1,delta=1,noexec
+    11                           	psect	udata_bank6,global,class=BANK6,space=1,delta=1,noexec
+    12                           	psect	udata_bank7,global,class=BANK7,space=1,delta=1,noexec
+    13                           	psect	udata_bank8,global,class=BANK8,space=1,delta=1,noexec
+    14                           	psect	udata_bank9,global,class=BANK9,space=1,delta=1,noexec
+    15                           	psect	udata_bank10,global,class=BANK10,space=1,delta=1,noexec
+    16                           	psect	udata_bank11,global,class=BANK11,space=1,delta=1,noexec
+    17                           	psect	udata_bank12,global,class=BANK12,space=1,delta=1,noexec
+    18                           	psect	udata_bank13,global,class=BANK13,space=1,delta=1,noexec
+    19                           	psect	udata_bank14,global,class=BANK14,space=1,delta=1,noexec
+    20                           	psect	udata_bank15,global,class=BANK15,space=1,delta=1,noexec
+    21                           	psect	udata_bank16,global,class=BANK16,space=1,delta=1,noexec
+    22                           	psect	udata_bank17,global,class=BANK17,space=1,delta=1,noexec
+    23                           	psect	udata_bank18,global,class=BANK18,space=1,delta=1,noexec
+    24                           	psect	udata_bank19,global,class=BANK19,space=1,delta=1,noexec
+    25                           	psect	udata_bank20,global,class=BANK20,space=1,delta=1,noexec
+    26                           	psect	udata_bank21,global,class=BANK21,space=1,delta=1,noexec
+    27                           	psect	udata_bank22,global,class=BANK22,space=1,delta=1,noexec
+    28                           	psect	udata_bank23,global,class=BANK23,space=1,delta=1,noexec
+    29                           	psect	udata_bank24,global,class=BANK24,space=1,delta=1,noexec
+    30                           	psect	udata_bank25,global,class=BANK25,space=1,delta=1,noexec
+    31                           	psect	code,global,class=CODE,delta=2
+    32                           	psect	data,global,class=STRCODE,delta=2,noexec
+    33                           	psect	edata,global,class=EEDATA,space=3,delta=2,noexec
+    34                           	psect	resetVec,global,class=CODE,delta=2
+    35                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=2,noexec
+    36  0080                     
+    37                           	psect	udata_shr
+    38  0071                     count:
+    39  0071                     	ds	1	;1 byte in common memory
+    40                           
+    41                           	psect	code
+    42  07ED                     readPort:	
+    43                           ;read PORTC, storing the result into WREG
+    44                           
+    45  07ED  0140               	banksel	14
+    46  07EE  080E               	movf	14,w
+    47  07EF  0008               	return	;make this globally accessible
+    48  07F0                     main:
+    49  07F0  017E               	banksel	8014
+    50  07F1  01CE               	clrf	78
+    51  07F2  01F1               	clrf	count
+    52  07F3                     loop:
+    53                           
+    54                           ;a call to a routine in the same psect
+    55  07F3  27ED               	call	readPort	;value returned in WREG
+    56                           
+    57                           ;a call to a routine in a different module
+    58  07F4  3187               	pagesel	storeLevel
+    59  07F5  27E3               	call	storeLevel	;expects argument in WREG
+    60  07F6  3187               	pagesel	$
+    61                           
+    62                           ;wait for a few cycles
+    63  07F7  30FF               	movlw	255
+    64  07F8                     delay:
+    65  07F8  0B89               	decfsz	9,f
+    66  07F9  2FF8               	goto	delay
+    67                           
+    68                           ;increment the array index, count, and stop iterating
+    69                           ;when the final element is reached
+    70  07FA  3064               	movlw	100
+    71  07FB  0AF1               	incf	count,f
+    72  07FC  0671               	xorwf	count,w
+    73  07FD  1D03               	btfss	3,2
+    74  07FE  2FF3               	goto	loop
+    75  07FF  2FED               	goto	$	;loop forever
+    76                           
+    77                           	psect	edata
+    78  0000                     stk_offset	set	0
+    79  0000                     auto_size	set	0
+    80                           
+    81                           ; stack_auto defines a symbol /name/_offset which equates to the
+    82                           ; stack offset of the auto object in question
+    83  0000                     
+    84                           ; stack_param defines a symbol /name/_offset which equates to the
+    85                           ; stack offset of the parameter object in question
+    86  0000                     
+    87                           ; alloc_stack adjusts the SP to allocate space for auto objects
+    88                           ; it also links in to the btemp symbol so that can be used
+    89  0000                     
+    90                           ; restore_stack adjusts the SP to remove all auto and parameter
+    91                           ; objects from the stack prior to returning from a function
+    92  0000                     
+    93                           	psect	resetVec
+    94  0000                     resetVec:
+    95  0000  3187               	pagesel	main
+    96  0001  2FF0               	goto	main	;link in with global symbol defined elsewhere
+    97                           
+    98                           	psect	config
+    99                           
+   100                           ;Config register CONFIG1 @ 0x8007
+   101                           ;	External Oscillator mode selection bits
+   102                           ;	FEXTOSC = OFF, Oscillator not enabled
+   103                           ;	Power-up default value for COSC bits
+   104                           ;	RSTOSC = HFINT1, HFINTOSC (1MHz)
+   105                           ;	Clock Out Enable bit
+   106                           ;	CLKOUTEN = OFF, CLKOUT function is disabled; i/o or oscillator function on OSC2
+   107                           ;	Clock Switch Enable bit
+   108                           ;	CSWEN = ON, Writing to NOSC and NDIV is allowed
+   109                           ;	Fail-Safe Clock Monitor Enable bit
+   110                           ;	FCMEN = ON, FSCM timer enabled
+   111  8007                     	org	32775
+   112  8007  3FEC               	dw	16364
+   113                           
+   114                           ;Config register CONFIG2 @ 0x8008
+   115                           ;	Master Clear Enable bit
+   116                           ;	MCLRE = ON, MCLR pin is Master Clear function
+   117                           ;	Power-up Timer Enable bit
+   118                           ;	PWRTS = OFF, PWRT disabled
+   119                           ;	Low-Power BOR enable bit
+   120                           ;	LPBOREN = OFF, ULPBOR disabled
+   121                           ;	Brown-out reset enable bits
+   122                           ;	BOREN = ON, Brown-out Reset Enabled, SBOREN bit is ignored
+   123                           ;	Brown-out Reset Voltage Selection
+   124                           ;	BORV = LO, Brown-out Reset Voltage (VBOR) set to 2.45V
+   125                           ;	Zero-cross detect disable
+   126                           ;	ZCD = OFF, Zero-cross detect circuit is disabled at POR.
+   127                           ;	Peripheral Pin Select one-way control
+   128                           ;	PPS1WAY = ON, The PPSLOCK bit can be cleared and set only once in software
+   129                           ;	Stack Overflow/Underflow Reset Enable bit
+   130                           ;	STVREN = ON, Stack Overflow or Underflow will cause a reset
+   131  8008                     	org	32776
+   132  8008  3FFF               	dw	16383
+   133                           
+   134                           ;Config register CONFIG3 @ 0x8009
+   135                           ;	WDT Period Select bits
+   136                           ;	WDTCPS = WDTCPS_31, Divider ratio 1:65536; software control of WDTPS
+   137                           ;	WDT operating mode
+   138                           ;	WDTE = OFF, WDT Disabled, SWDTEN is ignored
+   139                           ;	WDT Window Select bits
+   140                           ;	WDTCWS = WDTCWS_7, window always open (100%); software control; keyed access not required
+   141                           ;	WDT input clock selector
+   142                           ;	WDTCCS = SC, Software Control
+   143  8009                     	org	32777
+   144  8009  3F9F               	dw	16287
+   145                           
+   146                           ;Config register CONFIG4 @ 0x800A
+   147                           ;	Boot Block Size Selection bits
+   148                           ;	BBSIZE = BB512, 512 words boot block size
+   149                           ;	Boot Block Enable bit
+   150                           ;	BBEN = OFF, Boot Block disabled
+   151                           ;	SAF Enable bit
+   152                           ;	SAFEN = OFF, SAF disabled
+   153                           ;	Application Block Write Protection bit
+   154                           ;	WRTAPP = OFF, Application Block not write protected
+   155                           ;	Boot Block Write Protection bit
+   156                           ;	WRTB = OFF, Boot Block not write protected
+   157                           ;	Configuration Register Write Protection bit
+   158                           ;	WRTC = OFF, Configuration Register not write protected
+   159                           ;	Data EEPROM write protection bit
+   160                           ;	WRTD = OFF, Data EEPROM NOT write protected
+   161                           ;	Storage Area Flash Write Protection bit
+   162                           ;	WRTSAF = OFF, SAF not write protected
+   163                           ;	Low Voltage Programming Enable bit
+   164                           ;	LVP = ON, Low Voltage programming enabled. MCLR/Vpp pin function is MCLR.
+   165  800A                     	org	32778
+   166  800A  3FFF               	dw	16383
+   167                           
+   168                           ;Config register CONFIG5 @ 0x800B
+   169                           ;	UserNVM Program memory code protection bit
+   170                           ;	CP = OFF, UserNVM code protection disabled
+   171  800B                     	org	32779
+   172  800B  3FFF               	dw	16383
+
+
+Microchip Technology PIC Macro Assembler V2.32 build 20210114182548 
+Symbol Table                                                                                               Tue Mar  9 09:14:28 2021
+
+                            WREG 0009                              main 07F0                              loop 07F3  
+                           PORTC 000E                             delay 07F8                             count 0071  
+                          ANSELC 1F4E                            STATUS 0003                          readPort 07ED  
+                        resetVec 0000                        storeLevel 07E3  

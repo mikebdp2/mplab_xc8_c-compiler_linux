@@ -1,0 +1,4 @@
+b5a8c5fc34af01bdda107d59d0a1854678cac41f2ac5946ae2f4d0bdb89806e5  ./join_parts.sh
+16558f8cf10aa6af8d95adee702e3e57058810cfb44ec75fd4bbde018576092b  ./xc8-v2.46-full-install-linux-x64-installer.run
+473b71951aeebedbf53cfb7e1925f5512bfa5eed95229081956185337067136f  ./xc8-v2.46-full-install-linux-x64-installer.run_part01
+7e8a349502478784a6b4a87dd919380b645449035c93f816ad1285f25157a282  ./xc8-v2.46-full-install-linux-x64-installer.run_part02

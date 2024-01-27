@@ -1,0 +1,30 @@
+[p LITE_MODE AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PIC14E ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F1719 ]
+[d frameptr 6 ]
+"10 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"4 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"40 C:\Users\c08227\MPLABXProjects\XC8_UG_EEs_PIC_Examples\Example2.X\example2.c
+[v _main main `(v  1 e 1 0 ]
+"1272 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1719.h
+[v _TRISB TRISB `VEuc  1 e 1 @141 ]
+"1396
+[v _TRISD TRISD `VEuc  1 e 1 @143 ]
+"2352
+[v _LATB LATB `VEuc  1 e 1 @269 ]
+"2476
+[v _LATD LATD `VEuc  1 e 1 @271 ]
+"3854
+[v _ANSELB ANSELB `VEuc  1 e 1 @397 ]
+"3955
+[v _ANSELD ANSELD `VEuc  1 e 1 @399 ]
+"40 C:\Users\c08227\MPLABXProjects\XC8_UG_EEs_PIC_Examples\Example2.X\example2.c
+[v _main main `(v  1 e 1 0 ]
+{
+"42
+[v main@portValue portValue `uc  1 a 1 1 ]
+"67
+} 0

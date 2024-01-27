@@ -1,0 +1,205 @@
+[p LITE_MODE AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PIC14E ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F1719 ]
+[d frameptr 6 ]
+"86 C:\Users\c08227\MPLABXProjects\XC8_UG_EEs_PIC_Examples\Example4.X\mcc_generated_files/adc.c
+[e E5564 . `uc
+channel_AN0 0
+channel_DAC2_Output 28
+channel_Temp 29
+channel_DAC1_Output 30
+channel_FVRBuffer1 31
+]
+"72 C:\Users\c08227\MPLABXProjects\XC8_UG_EEs_PIC_Examples\Example4.X\main.c
+[e E5566 . `uc
+channel_AN0 0
+channel_DAC2_Output 28
+channel_Temp 29
+channel_DAC1_Output 30
+channel_FVRBuffer1 31
+]
+"10 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"4 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"49 C:\Users\c08227\MPLABXProjects\XC8_UG_EEs_PIC_Examples\Example4.X\main.c
+[v _main main `(v  1 e 1 0 ]
+"65 C:\Users\c08227\MPLABXProjects\XC8_UG_EEs_PIC_Examples\Example4.X\mcc_generated_files/adc.c
+[v _ADC_Initialize ADC_Initialize `(v  1 e 1 0 ]
+"86
+[v _ADC_SelectChannel ADC_SelectChannel `(v  1 e 1 0 ]
+"94
+[v _ADC_StartConversion ADC_StartConversion `(v  1 e 1 0 ]
+"101
+[v _ADC_IsConversionDone ADC_IsConversionDone `(a  1 e 1 0 ]
+"50 C:\Users\c08227\MPLABXProjects\XC8_UG_EEs_PIC_Examples\Example4.X\mcc_generated_files/mcc.c
+[v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
+"59
+[v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
+"69
+[v _WDT_Initialize WDT_Initialize `(v  1 e 1 0 ]
+"57 C:\Users\c08227\MPLABXProjects\XC8_UG_EEs_PIC_Examples\Example4.X\mcc_generated_files/pin_manager.c
+[v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
+"1210 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1719.h
+[v _TRISA TRISA `VEuc  1 e 1 @140 ]
+"1272
+[v _TRISB TRISB `VEuc  1 e 1 @141 ]
+"1334
+[v _TRISC TRISC `VEuc  1 e 1 @142 ]
+"1396
+[v _TRISD TRISD `VEuc  1 e 1 @143 ]
+"1458
+[v _TRISE TRISE `VEuc  1 e 1 @144 ]
+[s S127 . 1 `uc 1 PS 1 0 :3:0 
+`uc 1 PSA 1 0 :1:3 
+`uc 1 TMR0SE 1 0 :1:4 
+`uc 1 TMR0CS 1 0 :1:5 
+`uc 1 INTEDG 1 0 :1:6 
+`uc 1 nWPUEN 1 0 :1:7 
+]
+"1694
+[s S134 . 1 `uc 1 PS0 1 0 :1:0 
+`uc 1 PS1 1 0 :1:1 
+`uc 1 PS2 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 T0SE 1 0 :1:4 
+`uc 1 T0CS 1 0 :1:5 
+]
+[u S141 . 1 `S127 1 . 1 0 `S134 1 . 1 0 ]
+[v _OPTION_REGbits OPTION_REGbits `VES141  1 e 1 @149 ]
+"1811
+[v _WDTCON WDTCON `VEuc  1 e 1 @151 ]
+"1870
+[v _OSCTUNE OSCTUNE `VEuc  1 e 1 @152 ]
+"1928
+[v _OSCCON OSCCON `VEuc  1 e 1 @153 ]
+"2069
+[v _ADRESL ADRESL `VEuc  1 e 1 @155 ]
+"2089
+[v _ADRESH ADRESH `VEuc  1 e 1 @156 ]
+"2109
+[v _ADCON0 ADCON0 `VEuc  1 e 1 @157 ]
+[s S33 . 1 `uc 1 ADON 1 0 :1:0 
+`uc 1 GO_nDONE 1 0 :1:1 
+`uc 1 CHS 1 0 :5:2 
+]
+"2134
+[s S37 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 ADGO 1 0 :1:1 
+`uc 1 CHS0 1 0 :1:2 
+`uc 1 CHS1 1 0 :1:3 
+`uc 1 CHS2 1 0 :1:4 
+`uc 1 CHS3 1 0 :1:5 
+`uc 1 CHS4 1 0 :1:6 
+]
+[s S45 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+]
+[u S48 . 1 `S33 1 . 1 0 `S37 1 . 1 0 `S45 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES48  1 e 1 @157 ]
+"2189
+[v _ADCON1 ADCON1 `VEuc  1 e 1 @158 ]
+"2242
+[v _ADCON2 ADCON2 `VEuc  1 e 1 @159 ]
+"2290
+[v _LATA LATA `VEuc  1 e 1 @268 ]
+"2352
+[v _LATB LATB `VEuc  1 e 1 @269 ]
+"2414
+[v _LATC LATC `VEuc  1 e 1 @270 ]
+"2476
+[v _LATD LATD `VEuc  1 e 1 @271 ]
+"2538
+[v _LATE LATE `VEuc  1 e 1 @272 ]
+"2862
+[v _BORCON BORCON `VEuc  1 e 1 @278 ]
+"3804
+[v _ANSELA ANSELA `VEuc  1 e 1 @396 ]
+"3854
+[v _ANSELB ANSELB `VEuc  1 e 1 @397 ]
+"3904
+[v _ANSELC ANSELC `VEuc  1 e 1 @398 ]
+"3955
+[v _ANSELD ANSELD `VEuc  1 e 1 @399 ]
+"4017
+[v _ANSELE ANSELE `VEuc  1 e 1 @400 ]
+"5085
+[v _WPUA WPUA `VEuc  1 e 1 @524 ]
+"5147
+[v _WPUB WPUB `VEuc  1 e 1 @525 ]
+"5209
+[v _WPUC WPUC `VEuc  1 e 1 @526 ]
+"5271
+[v _WPUD WPUD `VEuc  1 e 1 @527 ]
+"5333
+[v _WPUE WPUE `VEuc  1 e 1 @528 ]
+"6769
+[v _ODCONA ODCONA `VEuc  1 e 1 @652 ]
+"6831
+[v _ODCONB ODCONB `VEuc  1 e 1 @653 ]
+"6893
+[v _ODCONC ODCONC `VEuc  1 e 1 @654 ]
+"6955
+[v _ODCOND ODCOND `VEuc  1 e 1 @655 ]
+"7017
+[v _ODCONE ODCONE `VEuc  1 e 1 @656 ]
+"7543
+[v _SLRCONA SLRCONA `VEuc  1 e 1 @780 ]
+"7605
+[v _SLRCONB SLRCONB `VEuc  1 e 1 @781 ]
+"7667
+[v _SLRCONC SLRCONC `VEuc  1 e 1 @782 ]
+"7729
+[v _SLRCOND SLRCOND `VEuc  1 e 1 @783 ]
+"7791
+[v _SLRCONE SLRCONE `VEuc  1 e 1 @784 ]
+"49 C:\Users\c08227\MPLABXProjects\XC8_UG_EEs_PIC_Examples\Example4.X\main.c
+[v _main main `(v  1 e 1 0 ]
+{
+"84
+} 0
+"50 C:\Users\c08227\MPLABXProjects\XC8_UG_EEs_PIC_Examples\Example4.X\mcc_generated_files/mcc.c
+[v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
+{
+"57
+} 0
+"69
+[v _WDT_Initialize WDT_Initialize `(v  1 e 1 0 ]
+{
+"73
+} 0
+"57 C:\Users\c08227\MPLABXProjects\XC8_UG_EEs_PIC_Examples\Example4.X\mcc_generated_files/pin_manager.c
+[v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
+{
+"120
+} 0
+"59 C:\Users\c08227\MPLABXProjects\XC8_UG_EEs_PIC_Examples\Example4.X\mcc_generated_files/mcc.c
+[v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
+{
+"67
+} 0
+"65 C:\Users\c08227\MPLABXProjects\XC8_UG_EEs_PIC_Examples\Example4.X\mcc_generated_files/adc.c
+[v _ADC_Initialize ADC_Initialize `(v  1 e 1 0 ]
+{
+"84
+} 0
+"94
+[v _ADC_StartConversion ADC_StartConversion `(v  1 e 1 0 ]
+{
+"98
+} 0
+"86
+[v _ADC_SelectChannel ADC_SelectChannel `(v  1 e 1 0 ]
+{
+[v ADC_SelectChannel@channel channel `E5564  1 a 1 wreg ]
+[v ADC_SelectChannel@channel channel `E5564  1 a 1 wreg ]
+"89
+[v ADC_SelectChannel@channel channel `E5564  1 a 1 1 ]
+"92
+} 0
+"101
+[v _ADC_IsConversionDone ADC_IsConversionDone `(a  1 e 1 0 ]
+{
+"105
+} 0

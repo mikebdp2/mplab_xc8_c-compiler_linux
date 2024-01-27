@@ -1,0 +1,194 @@
+[p LITE_MODE AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PIC14E ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F1939 ]
+[d frameptr 6 ]
+"10 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"4 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\pic\__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"51 C:\Users\c08227\MPLABXProjects\XC8_UG_EEs_PIC_Examples\Example5.X\main.c
+[v _main main `(v  1 e 1 0 ]
+"50 C:\Users\c08227\MPLABXProjects\XC8_UG_EEs_PIC_Examples\Example5.X\mcc_generated_files/mcc.c
+[v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
+"58
+[v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
+"68
+[v _WDT_Initialize WDT_Initialize `(v  1 e 1 0 ]
+"58 C:\Users\c08227\MPLABXProjects\XC8_UG_EEs_PIC_Examples\Example5.X\mcc_generated_files/memory.c
+[v _FLASH_ReadWord FLASH_ReadWord `(us  1 e 2 0 ]
+"95
+[v _FLASH_WriteBlock FLASH_WriteBlock `(c  1 e 1 0 ]
+"156
+[v _FLASH_EraseBlock FLASH_EraseBlock `(v  1 e 1 0 ]
+"187
+[v _DATAEE_WriteByte DATAEE_WriteByte `(v  1 e 1 0 ]
+"211
+[v _DATAEE_ReadByte DATAEE_ReadByte `(uc  1 e 1 0 ]
+"57 C:\Users\c08227\MPLABXProjects\XC8_UG_EEs_PIC_Examples\Example5.X\mcc_generated_files/pin_manager.c
+[v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
+[s S22 . 1 `uc 1 IOCIF 1 0 :1:0 
+`uc 1 INTF 1 0 :1:1 
+`uc 1 TMR0IF 1 0 :1:2 
+`uc 1 IOCIE 1 0 :1:3 
+`uc 1 INTE 1 0 :1:4 
+`uc 1 TMR0IE 1 0 :1:5 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+"374 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h
+[s S31 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 T0IF 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 T0IE 1 0 :1:5 
+]
+[u S36 . 1 `S22 1 . 1 0 `S31 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES36  1 e 1 @11 ]
+[s S219 . 1 `uc 1 CCP2IF 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 LCDIF 1 0 :1:2 
+`uc 1 BCLIF 1 0 :1:3 
+`uc 1 EEIF 1 0 :1:4 
+`uc 1 C1IF 1 0 :1:5 
+`uc 1 C2IF 1 0 :1:6 
+`uc 1 OSFIF 1 0 :1:7 
+]
+"794
+[u S228 . 1 `S219 1 . 1 0 ]
+[v _PIR2bits PIR2bits `VES228  1 e 1 @18 ]
+"1313
+[v _TRISA TRISA `VEuc  1 e 1 @140 ]
+"1375
+[v _TRISB TRISB `VEuc  1 e 1 @141 ]
+"1437
+[v _TRISC TRISC `VEuc  1 e 1 @142 ]
+"1499
+[v _TRISD TRISD `VEuc  1 e 1 @143 ]
+"1561
+[v _TRISE TRISE `VEuc  1 e 1 @144 ]
+[s S175 . 1 `uc 1 PS0 1 0 :1:0 
+`uc 1 PS1 1 0 :1:1 
+`uc 1 PS2 1 0 :1:2 
+`uc 1 PSA 1 0 :1:3 
+`uc 1 TMR0SE 1 0 :1:4 
+`uc 1 TMR0CS 1 0 :1:5 
+`uc 1 INTEDG 1 0 :1:6 
+`uc 1 nWPUEN 1 0 :1:7 
+]
+"1787
+[s S184 . 1 `uc 1 PS 1 0 :3:0 
+`uc 1 . 1 0 :1:3 
+`uc 1 T0SE 1 0 :1:4 
+`uc 1 T0CS 1 0 :1:5 
+]
+[u S189 . 1 `S175 1 . 1 0 `S184 1 . 1 0 ]
+[v _OPTION_REGbits OPTION_REGbits `VES189  1 e 1 @149 ]
+"1898
+[v _WDTCON WDTCON `VEuc  1 e 1 @151 ]
+"1957
+[v _OSCTUNE OSCTUNE `VEuc  1 e 1 @152 ]
+"2015
+[v _OSCCON OSCCON `VEuc  1 e 1 @153 ]
+"2357
+[v _LATA LATA `VEuc  1 e 1 @268 ]
+"2419
+[v _LATB LATB `VEuc  1 e 1 @269 ]
+"2481
+[v _LATC LATC `VEuc  1 e 1 @270 ]
+"2543
+[v _LATD LATD `VEuc  1 e 1 @271 ]
+"2613
+[v _LATE LATE `VEuc  1 e 1 @272 ]
+"2923
+[v _BORCON BORCON `VEuc  1 e 1 @278 ]
+"3272
+[v _APFCON APFCON `VEuc  1 e 1 @285 ]
+"3328
+[v _ANSELA ANSELA `VEuc  1 e 1 @396 ]
+"3386
+[v _ANSELB ANSELB `VEuc  1 e 1 @397 ]
+"3444
+[v _ANSELD ANSELD `VEuc  1 e 1 @399 ]
+"3514
+[v _ANSELE ANSELE `VEuc  1 e 1 @400 ]
+"3561
+[v _EEADRL EEADRL `VEuc  1 e 1 @401 ]
+"3581
+[v _EEADRH EEADRH `VEuc  1 e 1 @402 ]
+"3608
+[v _EEDATL EEDATL `VEuc  1 e 1 @403 ]
+"3646
+[v _EEDATH EEDATH `VEuc  1 e 1 @404 ]
+[s S56 . 1 `uc 1 RD 1 0 :1:0 
+`uc 1 WR 1 0 :1:1 
+`uc 1 WREN 1 0 :1:2 
+`uc 1 WRERR 1 0 :1:3 
+`uc 1 FREE 1 0 :1:4 
+`uc 1 LWLO 1 0 :1:5 
+`uc 1 CFGS 1 0 :1:6 
+`uc 1 EEPGD 1 0 :1:7 
+]
+"3683
+[u S65 . 1 `S56 1 . 1 0 ]
+[v _EECON1bits EECON1bits `VES65  1 e 1 @405 ]
+"3728
+[v _EECON2 EECON2 `VEuc  1 e 1 @406 ]
+"4063
+[v _WPUB WPUB `VEuc  1 e 1 @525 ]
+"4133
+[v _WPUE WPUE `VEuc  1 e 1 @528 ]
+"51 C:\Users\c08227\MPLABXProjects\XC8_UG_EEs_PIC_Examples\Example5.X\main.c
+[v _main main `(v  1 e 1 0 ]
+{
+"59
+[v main@RAMArray RAMArray `VE[64]uc  1 a 64 0 ]
+"60
+[v main@i i `uc  1 a 1 64 ]
+"89
+} 0
+"50 C:\Users\c08227\MPLABXProjects\XC8_UG_EEs_PIC_Examples\Example5.X\mcc_generated_files/mcc.c
+[v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
+{
+"56
+} 0
+"68
+[v _WDT_Initialize WDT_Initialize `(v  1 e 1 0 ]
+{
+"72
+} 0
+"57 C:\Users\c08227\MPLABXProjects\XC8_UG_EEs_PIC_Examples\Example5.X\mcc_generated_files/pin_manager.c
+[v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
+{
+"104
+} 0
+"58 C:\Users\c08227\MPLABXProjects\XC8_UG_EEs_PIC_Examples\Example5.X\mcc_generated_files/mcc.c
+[v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
+{
+"66
+} 0
+"187 C:\Users\c08227\MPLABXProjects\XC8_UG_EEs_PIC_Examples\Example5.X\mcc_generated_files/memory.c
+[v _DATAEE_WriteByte DATAEE_WriteByte `(v  1 e 1 0 ]
+{
+[v DATAEE_WriteByte@bAdd bAdd `uc  1 a 1 wreg ]
+"189
+[v DATAEE_WriteByte@GIEBitValue GIEBitValue `uc  1 a 1 2 ]
+"187
+[v DATAEE_WriteByte@bAdd bAdd `uc  1 a 1 wreg ]
+[v DATAEE_WriteByte@bData bData `uc  1 p 1 0 ]
+"189
+[v DATAEE_WriteByte@bAdd bAdd `uc  1 a 1 1 ]
+"209
+} 0
+"211
+[v _DATAEE_ReadByte DATAEE_ReadByte `(uc  1 e 1 0 ]
+{
+[v DATAEE_ReadByte@bAdd bAdd `uc  1 a 1 wreg ]
+[v DATAEE_ReadByte@bAdd bAdd `uc  1 a 1 wreg ]
+"213
+[v DATAEE_ReadByte@bAdd bAdd `uc  1 a 1 0 ]
+"221
+} 0

@@ -1,0 +1,5 @@
+These are MPLAB X IDE projects containing the example codes used in the MPLAB® XC8 PIC Assembler User's Guide for Embedded Engineers (DS50002994). This guide is present in the docs folder of the MPLAB XC8 C Compiler distribution, which also includes the PIC Assembler. The guide can also be found at https://onlinedocs.microchip.com.
+
+The projects attempt to show how the PIC Assembler directives and options can be used together to perform certain tasks. The projects were written for the 16F18446 and 18F47K42 Curiosity Nano boards (part numbers DM164144 and DM182028, respectively), but they can be adapted to suite your target device and application.
+
+Refer also to the MPLAB® XC8 PIC® Assembler User's Guide (DS50002974) and MPASM™ to MPLAB® XC8 PIC® Assembler Migration Guide (DS50002973), both of which are located in the docs folder of the MPLAB XC8 C Compiler distribution.

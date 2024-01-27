@@ -1,0 +1,87 @@
+              README for Mircochip XC8-AVR GNU Toolchain v2.39 Sources 
+              =========================================================
+
+
+This directory contains the complete modified source code of various open source
+software that was used for building the Microchip XC8 AVR GNU Toolchain v2.39.
+
+
+CONTENTS
+========
+
+1. avr-binutils.tar.bz2
+
+   Binutils 2.26.20160125 with the modifications in AVR target
+
+2. avr-gcc.tar.bz2
+
+   GCC 5.4.0 with the modifications in AVR target
+
+3. avr-libc.tar.bz2
+
+   AVR libc "2.0.0" with the modifications
+
+4. avr8-headers.zip
+
+   Header files for AVR 8 bit devices
+
+5. avr-gdb.tar.bz2
+
+   GDB with the modification in AVR target
+
+6. build-avr8-gnu-toolchain-git.sh
+
+   Script to build the toolchain
+
+
+
+HOW TO BUILD?
+=============
+
+Preparation:
+
+1. Create directories for build <bld>, source <src>, and install <install>
+  
+
+2. Extract the source tarballs for binutils, gcc, gdb and avr-libc 
+   to <src>, and copy the avr8-headers zip to <src>/headers/.
+
+
+3. Building the toolchain has following dependencies:
+
+   gmp-5.0.2
+   mpfr-3.0.0
+   mpc-0.9
+   ncurses-5.9
+
+   They may be obtained from their respective project websites. The tarballs
+   of these should be copied to the following directories:
+
+   - gmp tar.gz file to <src>/gmp/
+   - mpfr tar.gz file to <src>/mpfr/
+   - mpc tar file to <src>/mpc/
+   - ncurses tar file to <src>/ncurses/
+
+   libxml2-2.9.7
+   - This should be installed, library and include path should be in CXXFLAGS
+
+
+4. In order to build, issue the following command
+
+
+   bash build-avr8-gnu-toolchain-git.sh -b <bld> -p <install> -s <src> 
+
+
+   Note 1: If the binaries are required to be installed in the default 
+           directories, one may use  -P <root-passwd>  option to pass the root 
+           password.
+
+   Note 2: This current version assumes that the build environment has the 
+           following present and available:
+
+           - automake-1.11.1
+           - autoconf-2.64
+           - texinfo-4.13
+
+
+--------------------------------------------------------------------------------

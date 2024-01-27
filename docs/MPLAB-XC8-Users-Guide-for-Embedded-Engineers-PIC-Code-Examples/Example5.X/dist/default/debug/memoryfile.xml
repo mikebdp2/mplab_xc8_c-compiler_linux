@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <executable name="dist/default/debug\Example5.X.debug.hex">
+    <memory name="program">
+      <units>words</units>
+      <length>16384</length>
+      <used>253</used>
+      <free>16131</free>
+    </memory>
+    <memory name="data">
+      <units>bytes</units>
+      <length>1024</length>
+      <used>71</used>
+      <free>953</free>
+    </memory>
+  </executable>
+</project>

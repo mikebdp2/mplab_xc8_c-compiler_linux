@@ -1,0 +1,88 @@
+
+
+Microchip MPLAB XC8 Assembler V2.31 build 20201012212115 
+                                                                                                           Tue Mar  9 09:08:53 2021
+
+
+     1                           	processor	16F18446
+     2                           	pagewidth 132
+     3                           	psect	udata_shr,global,class=COMMON,space=1,delta=1,noexec
+     4                           	psect	udata,global,class=RAM,space=1,delta=1,noexec
+     5                           	psect	udata_bank0,global,class=BANK0,space=1,delta=1,noexec
+     6                           	psect	udata_bank1,global,class=BANK1,space=1,delta=1,noexec
+     7                           	psect	udata_bank2,global,class=BANK2,space=1,delta=1,noexec
+     8                           	psect	udata_bank3,global,class=BANK3,space=1,delta=1,noexec
+     9                           	psect	udata_bank4,global,class=BANK4,space=1,delta=1,noexec
+    10                           	psect	udata_bank5,global,class=BANK5,space=1,delta=1,noexec
+    11                           	psect	udata_bank6,global,class=BANK6,space=1,delta=1,noexec
+    12                           	psect	udata_bank7,global,class=BANK7,space=1,delta=1,noexec
+    13                           	psect	udata_bank8,global,class=BANK8,space=1,delta=1,noexec
+    14                           	psect	udata_bank9,global,class=BANK9,space=1,delta=1,noexec
+    15                           	psect	udata_bank10,global,class=BANK10,space=1,delta=1,noexec
+    16                           	psect	udata_bank11,global,class=BANK11,space=1,delta=1,noexec
+    17                           	psect	udata_bank12,global,class=BANK12,space=1,delta=1,noexec
+    18                           	psect	udata_bank13,global,class=BANK13,space=1,delta=1,noexec
+    19                           	psect	udata_bank14,global,class=BANK14,space=1,delta=1,noexec
+    20                           	psect	udata_bank15,global,class=BANK15,space=1,delta=1,noexec
+    21                           	psect	udata_bank16,global,class=BANK16,space=1,delta=1,noexec
+    22                           	psect	udata_bank17,global,class=BANK17,space=1,delta=1,noexec
+    23                           	psect	udata_bank18,global,class=BANK18,space=1,delta=1,noexec
+    24                           	psect	udata_bank19,global,class=BANK19,space=1,delta=1,noexec
+    25                           	psect	udata_bank20,global,class=BANK20,space=1,delta=1,noexec
+    26                           	psect	udata_bank21,global,class=BANK21,space=1,delta=1,noexec
+    27                           	psect	udata_bank22,global,class=BANK22,space=1,delta=1,noexec
+    28                           	psect	udata_bank23,global,class=BANK23,space=1,delta=1,noexec
+    29                           	psect	udata_bank24,global,class=BANK24,space=1,delta=1,noexec
+    30                           	psect	udata_bank25,global,class=BANK25,space=1,delta=1,noexec
+    31                           	psect	code,global,class=CODE,delta=2
+    32                           	psect	data,global,class=STRCODE,delta=2,noexec
+    33                           	psect	edata,global,class=EEDATA,space=3,delta=2,noexec
+    34                           	dabs	1,0x120,80
+    35                           	dabs	1,0x1A0,20
+    36                           	dabs	1,0x20A0,0,levels
+    37  0080                     
+    38                           	psect	udata_shr
+    39  0070                     tmp:
+    40  0070                     	ds	1	;1 byte in common memory
+    41                           
+    42                           	psect	code
+    43  07E3                     storeLevel:	
+    44                           ;define 100 bytes of linear memory, at banked address 0x120
+    45                           ;store byte passed via WREG into the count-th element of the
+    46                           ;linear memory array, levels
+    47                           
+    48  07E3  00F0               	movwf	tmp	;store the parameter
+    49  07E4  0871               	movf	count,w	;add the count index to...
+    50  07E5  3EA0               	addlw	low levels	;the linear base address of the array...
+    51  07E6  0086               	movwf	6	;storing the result in FSR1
+    52  07E7  3020               	movlw	high levels
+    53  07E8  0187               	clrf	7
+    54  07E9  3D87               	addwfc	7,f
+    55  07EA  0870               	movf	tmp,w	;retrieve the parameter
+    56  07EB  0081               	movwf	1	;access levels using linear memory
+    57  07EC  0008               	return
+    58                           
+    59                           	psect	edata
+    60  0000                     stk_offset	set	0
+    61  0000                     auto_size	set	0
+    62                           
+    63                           ; stack_auto defines a symbol /name/_offset which equates to the
+    64                           ; stack offset of the auto object in question
+    65  0000                     
+    66                           ; stack_param defines a symbol /name/_offset which equates to the
+    67                           ; stack offset of the parameter object in question
+    68  0000                     
+    69                           ; alloc_stack adjusts the SP to allocate space for auto objects
+    70                           ; it also links in to the btemp symbol so that can be used
+    71  0000                     
+    72                           ; restore_stack adjusts the SP to remove all auto and parameter
+    73                           ; objects from the stack prior to returning from a function
+    74  0000                     	;link in with global symbol defined elsewhere
+
+
+Microchip Technology PIC Macro Assembler V2.31 build 20201012212115 
+Symbol Table                                                                                               Tue Mar  9 09:08:53 2021
+
+                             tmp 0070                             INDF1 0001                             FSR1H 0007  
+                           FSR1L 0006                             count 0071                            levels 20A0  
+                      storeLevel 07E3  

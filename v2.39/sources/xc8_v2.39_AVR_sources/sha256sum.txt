@@ -1,0 +1,6 @@
+ef7d05315e461badfe559fbfd7f8b06cc3047cc3baaad97eecb17d11739f8f17  ./avr8-headers.zip
+f6bba52d915fb97dfebe606f071b9cb00d1e0f9f0756ec9546e849775267f857  ./avr-binutils.tar.bz2
+d3dda84eb03b9738d118eb2be78e246106900493c0ae07819ad60815134a8058  ./avr-gdb.tar.bz2
+ce226a35c5e5ac730a0ea747e9beace9b8ca0cc090e995e82639d9a48d01015c  ./avr-libc.tar.bz2
+67e51e0b53afee844461f2e5d54b17804122a4488cb85e5d6dfd95ee3a22d250  ./build-avr8-gnu-toolchain.sh
+647c6d79139b5db39cc15cfb59adadcb4248678848d3cb643796ebb6ce8f08ba  ./SOURCES.README.txt

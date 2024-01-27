@@ -1,0 +1,222 @@
+
+
+Microchip MPLAB XC8 Assembler V2.30 build 20200825195618 
+                                                                                                           Tue Mar  9 09:17:33 2021
+
+
+     1                           	processor	16F18446
+     2                           	pagewidth 132
+     3                           	psect	udata_shr,global,class=COMMON,space=1,delta=1,noexec
+     4                           	psect	udata,global,class=RAM,space=1,delta=1,noexec
+     5                           	psect	udata_bank0,global,class=BANK0,space=1,delta=1,noexec
+     6                           	psect	udata_bank1,global,class=BANK1,space=1,delta=1,noexec
+     7                           	psect	udata_bank2,global,class=BANK2,space=1,delta=1,noexec
+     8                           	psect	udata_bank3,global,class=BANK3,space=1,delta=1,noexec
+     9                           	psect	udata_bank4,global,class=BANK4,space=1,delta=1,noexec
+    10                           	psect	udata_bank5,global,class=BANK5,space=1,delta=1,noexec
+    11                           	psect	udata_bank6,global,class=BANK6,space=1,delta=1,noexec
+    12                           	psect	udata_bank7,global,class=BANK7,space=1,delta=1,noexec
+    13                           	psect	udata_bank8,global,class=BANK8,space=1,delta=1,noexec
+    14                           	psect	udata_bank9,global,class=BANK9,space=1,delta=1,noexec
+    15                           	psect	udata_bank10,global,class=BANK10,space=1,delta=1,noexec
+    16                           	psect	udata_bank11,global,class=BANK11,space=1,delta=1,noexec
+    17                           	psect	udata_bank12,global,class=BANK12,space=1,delta=1,noexec
+    18                           	psect	udata_bank13,global,class=BANK13,space=1,delta=1,noexec
+    19                           	psect	udata_bank14,global,class=BANK14,space=1,delta=1,noexec
+    20                           	psect	udata_bank15,global,class=BANK15,space=1,delta=1,noexec
+    21                           	psect	udata_bank16,global,class=BANK16,space=1,delta=1,noexec
+    22                           	psect	udata_bank17,global,class=BANK17,space=1,delta=1,noexec
+    23                           	psect	udata_bank18,global,class=BANK18,space=1,delta=1,noexec
+    24                           	psect	udata_bank19,global,class=BANK19,space=1,delta=1,noexec
+    25                           	psect	udata_bank20,global,class=BANK20,space=1,delta=1,noexec
+    26                           	psect	udata_bank21,global,class=BANK21,space=1,delta=1,noexec
+    27                           	psect	udata_bank22,global,class=BANK22,space=1,delta=1,noexec
+    28                           	psect	udata_bank23,global,class=BANK23,space=1,delta=1,noexec
+    29                           	psect	udata_bank24,global,class=BANK24,space=1,delta=1,noexec
+    30                           	psect	udata_bank25,global,class=BANK25,space=1,delta=1,noexec
+    31                           	psect	code,global,class=CODE,delta=2
+    32                           	psect	data,global,class=STRCODE,delta=2,noexec
+    33                           	psect	edata,global,class=EEDATA,space=3,delta=2,noexec
+    34                           	psect	bitbss,global,bit,class=BANK1,space=1,delta=1
+    35                           	psect	resetVec,global,class=CODE,delta=2
+    36                           	psect	isrVec,global,class=CODE,delta=2
+    37                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=2,noexec
+    38  0080                     
+    39                           	psect	code
+    40  000E                     start:
+    41                           
+    42                           ;set up the state of the oscillator and peripherals with ((PORTA) and 07Fh), 2 as a digital output d
+      +                          riving
+    43                           ;the LED, assuming that other registers have not changed from their reset state
+    44  000E  3033               	movlw	51
+    45  000F  0140               	banksel	18
+    46  0010  0092               	movwf	18
+    47  0011  3002               	movlw	2
+    48  0012  0151               	banksel	2195
+    49  0013  0093               	movwf	2195
+    50                           
+    51                           ;configure and start timer using interrupts
+    52  0014  3089               	movlw	137
+    53  0015  014B               	banksel	1439
+    54  0016  009F               	movwf	1439
+    55  0017  301D               	movlw	29
+    56  0018  009D               	movwf	1437
+    57  0019  019C               	clrf	1436
+    58  001A  014E               	banksel	1814	;for ((PIE0) and 07Fh), 5 and ((PIR0) and 07Fh), 5
+    59  001B  128C               	bcf	12,5
+    60  001C  1696               	bsf	22,5
+    61  001D  3080               	movlw	128
+    62  001E  014B               	banksel	1438
+    63  001F  009E               	movwf	1438
+    64  0020  178B               	bsf	11,7
+    65  0021  170B               	bsf	11,6
+    66  0022                     loop:
+    67                           
+    68                           ;copy the desired state to the LED port pin
+    69  0022  0141               	banksel	LEDState/(0+8)
+    70  0023  1C20               	btfss	(LEDState/(0+8))& (0+127),LEDState& (0+7)
+    71  0024  2828               	goto	lightLED
+    72  0025  0140               	banksel	12
+    73  0026  150C               	bsf	12,2	;turn LED off
+    74  0027  2822               	goto	loop
+    75  0028                     lightLED:
+    76  0028  0140               	banksel	12
+    77  0029  110C               	bcf	12,2	;turn LED on
+    78  002A  2822               	goto	loop
+    79                           
+    80                           	psect	edata
+    81  0000                     stk_offset	set	0
+    82  0000                     auto_size	set	0
+    83                           
+    84                           ; stack_auto defines a symbol /name/_offset which equates to the
+    85                           ; stack offset of the auto object in question
+    86  0000                     
+    87                           ; stack_param defines a symbol /name/_offset which equates to the
+    88                           ; stack offset of the parameter object in question
+    89  0000                     
+    90                           ; alloc_stack adjusts the SP to allocate space for auto objects
+    91                           ; it also links in to the btemp symbol so that can be used
+    92  0000                     
+    93                           ; restore_stack adjusts the SP to remove all auto and parameter
+    94                           ; objects from the stack prior to returning from a function
+    95  0000                     	;make this global so it is watchable when debugging
+    96                           
+    97                           	psect	bitbss
+    98  0500                     LEDState:
+    99  0500                     	ds	1	;a single bit used to hold the required LED state
+   100                           
+   101                           	psect	resetVec
+   102  0000                     resetVec:
+   103  0000  3180  280E  3180   	ljmp	start
+   104                           
+   105                           	psect	isrVec
+   106  0004                     isr:
+   107                           
+   108                           ;no context save required in software for this device
+   109  0004  3180               	pagesel	$	;select this page for the following goto
+   110  0005  014E               	banksel	1814	;for ((PIE0) and 07Fh), 5 and ((PIR0) and 07Fh), 5
+   111                           
+   112                           ;for timer interrupts, set the required LED state
+   113  0006  1A96               	btfsc	22,5
+   114  0007  1E8C               	btfss	12,5
+   115  0008  280D               	goto	notTimerInt	;not a timer interrupt
+   116  0009  128C               	bcf	12,5
+   117                           
+   118                           ;toggle the desired bit state
+   119  000A  3001               	movlw	(0+1) shl (LEDState& (0+7))
+   120  000B  0141               	banksel	LEDState/(0+8)
+   121  000C  06A0               	xorwf	(LEDState/(0+8))& (0+127),f
+   122  000D                     notTimerInt:
+   123  000D                     exitISR:	
+   124                           ;code to handle other interrupts could be added here
+   125                           
+   126                           
+   127                           ;no context restore required in software
+   128  000D  0009               	retfie
+   129                           
+   130                           	psect	config
+   131                           
+   132                           ;Config register CONFIG1 @ 0x8007
+   133                           ;	External Oscillator mode selection bits
+   134                           ;	FEXTOSC = OFF, Oscillator not enabled
+   135                           ;	Power-up default value for COSC bits
+   136                           ;	RSTOSC = HFINT1, HFINTOSC (1MHz)
+   137                           ;	Clock Out Enable bit
+   138                           ;	CLKOUTEN = OFF, CLKOUT function is disabled; i/o or oscillator function on OSC2
+   139                           ;	Clock Switch Enable bit
+   140                           ;	CSWEN = ON, Writing to NOSC and NDIV is allowed
+   141                           ;	Fail-Safe Clock Monitor Enable bit
+   142                           ;	FCMEN = ON, FSCM timer enabled
+   143  8007                     	org	32775
+   144  8007  3FEC               	dw	16364
+   145                           
+   146                           ;Config register CONFIG2 @ 0x8008
+   147                           ;	Master Clear Enable bit
+   148                           ;	MCLRE = ON, MCLR pin is Master Clear function
+   149                           ;	Power-up Timer Enable bit
+   150                           ;	PWRTS = OFF, PWRT disabled
+   151                           ;	Low-Power BOR enable bit
+   152                           ;	LPBOREN = OFF, ULPBOR disabled
+   153                           ;	Brown-out reset enable bits
+   154                           ;	BOREN = ON, Brown-out Reset Enabled, SBOREN bit is ignored
+   155                           ;	Brown-out Reset Voltage Selection
+   156                           ;	BORV = LO, Brown-out Reset Voltage (VBOR) set to 2.45V
+   157                           ;	Zero-cross detect disable
+   158                           ;	ZCD = OFF, Zero-cross detect circuit is disabled at POR.
+   159                           ;	Peripheral Pin Select one-way control
+   160                           ;	PPS1WAY = ON, The PPSLOCK bit can be cleared and set only once in software
+   161                           ;	Stack Overflow/Underflow Reset Enable bit
+   162                           ;	STVREN = ON, Stack Overflow or Underflow will cause a reset
+   163  8008                     	org	32776
+   164  8008  3FFF               	dw	16383
+   165                           
+   166                           ;Config register CONFIG3 @ 0x8009
+   167                           ;	WDT Period Select bits
+   168                           ;	WDTCPS = WDTCPS_31, Divider ratio 1:65536; software control of WDTPS
+   169                           ;	WDT operating mode
+   170                           ;	WDTE = OFF, WDT Disabled, SWDTEN is ignored
+   171                           ;	WDT Window Select bits
+   172                           ;	WDTCWS = WDTCWS_7, window always open (100%); software control; keyed access not required
+   173                           ;	WDT input clock selector
+   174                           ;	WDTCCS = SC, Software Control
+   175  8009                     	org	32777
+   176  8009  3F9F               	dw	16287
+   177                           
+   178                           ;Config register CONFIG4 @ 0x800A
+   179                           ;	Boot Block Size Selection bits
+   180                           ;	BBSIZE = BB512, 512 words boot block size
+   181                           ;	Boot Block Enable bit
+   182                           ;	BBEN = OFF, Boot Block disabled
+   183                           ;	SAF Enable bit
+   184                           ;	SAFEN = OFF, SAF disabled
+   185                           ;	Application Block Write Protection bit
+   186                           ;	WRTAPP = OFF, Application Block not write protected
+   187                           ;	Boot Block Write Protection bit
+   188                           ;	WRTB = OFF, Boot Block not write protected
+   189                           ;	Configuration Register Write Protection bit
+   190                           ;	WRTC = OFF, Configuration Register not write protected
+   191                           ;	Data EEPROM write protection bit
+   192                           ;	WRTD = OFF, Data EEPROM NOT write protected
+   193                           ;	Storage Area Flash Write Protection bit
+   194                           ;	WRTSAF = OFF, SAF not write protected
+   195                           ;	Low Voltage Programming Enable bit
+   196                           ;	LVP = ON, Low Voltage programming enabled. MCLR/Vpp pin function is MCLR.
+   197  800A                     	org	32778
+   198  800A  3FFF               	dw	16383
+   199                           
+   200                           ;Config register CONFIG5 @ 0x800B
+   201                           ;	UserNVM Program memory code protection bit
+   202                           ;	CP = OFF, UserNVM code protection disabled
+   203  800B                     	org	32779
+   204  800B  3FFF               	dw	16383
+
+
+Microchip Technology PIC Macro Assembler V2.30 build 20200825195618 
+Symbol Table                                                                                               Tue Mar  9 09:17:33 2021
+
+                             isr 0004                              PIE0 0716                              PIR0 070C  
+                            loop 0022                             TMR0H 059D                             TMR0L 059C  
+                           PORTA 000C                             TRISA 0012                             start 000E  
+                          T0CON0 059E                            T0CON1 059F                            INTCON 000B  
+                          OSCFRQ 0893                           exitISR 000D                          LEDState 0500  
+                        lightLED 0028                          resetVec 0000                       notTimerInt 000D  

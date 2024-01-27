@@ -1,0 +1,349 @@
+%CMF
+# %PSECTS Section
+# For each object file, details of its psects are enumerated here.
+# The begining of the section is indicated by %PSECTS.  The first
+# line indicates the name of the first object file, e.g.
+#    $foo.obj
+# Each line that follows describes a psect in that object file, until
+# the next object file.  The lines that describe a psect have the
+# format:
+#    <psect name> <class name> <space> <link address> <load addresses> <length> <delta>
+# All addresses and the length are given in unqualified hexadecimal
+# in delta units.  Any other numeric values are decimal.
+%PSECTS
+$build/default/production/timedLED.o
+isrVec CODE 0 4 4 A 2
+resetVec CODE 0 0 0 3 2
+code CODE 0 E E 1D 2
+bitbss BANK1 1 500 A0 1 1
+config CONFIG 4 8007 8007 5 2
+# %UNUSED Section
+# This section enumerates the unused ranges of each CLASS. Each entry
+# is described on a single line as follows:
+#    <class name> <range> <delta>
+# Addresses given in the range are in hexadecimal and units of delta.
+%UNUSED
+RAM 20-6F 1
+RAM A1-EF 1
+RAM 120-16F 1
+RAM 1A0-1EF 1
+RAM 220-26F 1
+RAM 2A0-2EF 1
+RAM 320-36F 1
+RAM 3A0-3EF 1
+RAM 420-46F 1
+RAM 4A0-4EF 1
+RAM 520-56F 1
+RAM 5A0-5EF 1
+RAM 620-66F 1
+RAM 6A0-6EF 1
+RAM 720-76F 1
+RAM 7A0-7EF 1
+RAM 820-86F 1
+RAM 8A0-8EF 1
+RAM 920-96F 1
+RAM 9A0-9EF 1
+RAM A20-A6F 1
+RAM AA0-AEF 1
+RAM B20-B6F 1
+RAM BA0-BEF 1
+RAM C20-C6F 1
+RAM CA0-CBF 1
+BANK0 20-6F 1
+BANK1 A1-EF 1
+BANK2 120-16F 1
+BANK3 1A0-1EF 1
+BANK4 220-26F 1
+BANK5 2A0-2EF 1
+BANK6 320-36F 1
+BANK7 3A0-3EF 1
+BANK8 420-46F 1
+BANK9 4A0-4EF 1
+CONST 3-3 2
+CONST 2B-3FFF 2
+ENTRY 3-3 2
+ENTRY 2B-3FFF 2
+IDLOC 8000-8003 2
+SFR10 500-51F 1
+SFR11 580-59F 1
+SFR12 600-61F 1
+SFR13 680-69F 1
+SFR14 700-71F 1
+SFR15 780-79F 1
+SFR16 800-81F 1
+SFR17 880-89F 1
+SFR18 900-91F 1
+SFR19 980-99F 1
+SFR20 A00-A1F 1
+SFR21 A80-A9F 1
+SFR22 B00-B1F 1
+SFR23 B80-B9F 1
+SFR24 C00-C1F 1
+SFR25 C80-C9F 1
+SFR26 D00-D6F 1
+SFR27 D80-DEF 1
+SFR28 E00-E6F 1
+SFR29 E80-EEF 1
+SFR30 F00-F6F 1
+SFR31 F80-FEF 1
+SFR32 1000-106F 1
+SFR33 1080-10EF 1
+SFR34 1100-116F 1
+SFR35 1180-11EF 1
+SFR36 1200-126F 1
+SFR37 1280-12EF 1
+SFR38 1300-136F 1
+SFR39 1380-13EF 1
+SFR40 1400-146F 1
+SFR41 1480-14EF 1
+SFR42 1500-156F 1
+SFR43 1580-15EF 1
+SFR44 1600-166F 1
+SFR45 1680-16EF 1
+SFR46 1700-176F 1
+SFR47 1780-17EF 1
+SFR48 1800-186F 1
+SFR49 1880-18EF 1
+SFR50 1900-196F 1
+SFR51 1980-19EF 1
+SFR52 1A00-1A6F 1
+SFR53 1A80-1AEF 1
+SFR54 1B00-1B6F 1
+SFR55 1B80-1BEF 1
+SFR56 1C00-1C6F 1
+SFR57 1C80-1CEF 1
+SFR58 1D00-1D6F 1
+SFR59 1D80-1DEF 1
+SFR60 1E00-1E6F 1
+SFR61 1E80-1EEF 1
+SFR62 1F00-1F6F 1
+SFR63 1F80-1FEF 1
+CODE 3-3 2
+CODE 2B-3FFF 2
+SFR0 6-7 1
+SFR1 80-9F 1
+SFR2 100-11F 1
+SFR3 180-19F 1
+SFR4 200-21F 1
+SFR5 280-29F 1
+SFR6 300-31F 1
+SFR7 380-39F 1
+SFR8 400-41F 1
+SFR9 480-49F 1
+BANK10 520-56F 1
+BANK11 5A0-5EF 1
+BANK12 620-66F 1
+BANK13 6A0-6EF 1
+BANK14 720-76F 1
+BANK15 7A0-7EF 1
+BANK16 820-86F 1
+BANK17 8A0-8EF 1
+BANK18 920-96F 1
+BANK19 9A0-9EF 1
+BANK20 A20-A6F 1
+BANK21 AA0-AEF 1
+BANK22 B20-B6F 1
+BANK23 BA0-BEF 1
+BANK24 C20-C6F 1
+BANK25 CA0-CBF 1
+BIGRAM 2000-27EF 1
+COMMON 70-7F 1
+EEDATA F000-F0FF 2
+STRCODE 3-3 2
+STRCODE 2B-3FFF 2
+STRING 3-3 2
+STRING 2B-3FFF 2
+# %LINETAB Section
+# This section enumerates the file/line to address mappings.
+# The beginning of the section is indicated by %LINETAB.
+# The first line indicates the name of the first object file, e.g.
+#   $foo.obj
+# Each line that follows describes a single mapping until the next
+# object file.  Mappings have the following format:
+#    <address> <psect name> <class name> ><line number>:<file name>
+# The address is absolute and given given in unqualified hex 
+# in delta units of the psect. All mappings within an object file
+# are in ascending order of addresses.
+# All other numeric values are in decimal.
+%LINETAB
+$build/default/production/timedLED.o
+4 isrVec CODE >52:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_16F18446_timedLED.X/timedLED.s
+4 isrVec CODE >54:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_16F18446_timedLED.X/timedLED.s
+5 isrVec CODE >55:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_16F18446_timedLED.X/timedLED.s
+6 isrVec CODE >57:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_16F18446_timedLED.X/timedLED.s
+7 isrVec CODE >58:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_16F18446_timedLED.X/timedLED.s
+8 isrVec CODE >59:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_16F18446_timedLED.X/timedLED.s
+9 isrVec CODE >60:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_16F18446_timedLED.X/timedLED.s
+A isrVec CODE >62:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_16F18446_timedLED.X/timedLED.s
+B isrVec CODE >63:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_16F18446_timedLED.X/timedLED.s
+C isrVec CODE >64:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_16F18446_timedLED.X/timedLED.s
+D isrVec CODE >65:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_16F18446_timedLED.X/timedLED.s
+D isrVec CODE >67:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_16F18446_timedLED.X/timedLED.s
+D isrVec CODE >69:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_16F18446_timedLED.X/timedLED.s
+0 resetVec CODE >48:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_16F18446_timedLED.X/timedLED.s
+0 resetVec CODE >49:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_16F18446_timedLED.X/timedLED.s
+500 bitbss BANK1 >44:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_16F18446_timedLED.X/timedLED.s
+E code CODE >72:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_16F18446_timedLED.X/timedLED.s
+E code CODE >75:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_16F18446_timedLED.X/timedLED.s
+F code CODE >76:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_16F18446_timedLED.X/timedLED.s
+10 code CODE >77:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_16F18446_timedLED.X/timedLED.s
+11 code CODE >78:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_16F18446_timedLED.X/timedLED.s
+12 code CODE >79:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_16F18446_timedLED.X/timedLED.s
+13 code CODE >80:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_16F18446_timedLED.X/timedLED.s
+14 code CODE >82:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_16F18446_timedLED.X/timedLED.s
+15 code CODE >83:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_16F18446_timedLED.X/timedLED.s
+16 code CODE >84:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_16F18446_timedLED.X/timedLED.s
+17 code CODE >85:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_16F18446_timedLED.X/timedLED.s
+18 code CODE >86:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_16F18446_timedLED.X/timedLED.s
+19 code CODE >87:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_16F18446_timedLED.X/timedLED.s
+1A code CODE >88:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_16F18446_timedLED.X/timedLED.s
+1B code CODE >89:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_16F18446_timedLED.X/timedLED.s
+1C code CODE >90:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_16F18446_timedLED.X/timedLED.s
+1D code CODE >91:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_16F18446_timedLED.X/timedLED.s
+1E code CODE >92:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_16F18446_timedLED.X/timedLED.s
+1F code CODE >93:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_16F18446_timedLED.X/timedLED.s
+20 code CODE >94:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_16F18446_timedLED.X/timedLED.s
+21 code CODE >95:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_16F18446_timedLED.X/timedLED.s
+22 code CODE >96:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_16F18446_timedLED.X/timedLED.s
+22 code CODE >98:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_16F18446_timedLED.X/timedLED.s
+23 code CODE >99:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_16F18446_timedLED.X/timedLED.s
+24 code CODE >100:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_16F18446_timedLED.X/timedLED.s
+25 code CODE >101:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_16F18446_timedLED.X/timedLED.s
+26 code CODE >102:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_16F18446_timedLED.X/timedLED.s
+27 code CODE >103:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_16F18446_timedLED.X/timedLED.s
+28 code CODE >104:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_16F18446_timedLED.X/timedLED.s
+28 code CODE >105:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_16F18446_timedLED.X/timedLED.s
+29 code CODE >106:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_16F18446_timedLED.X/timedLED.s
+2A code CODE >107:/Users/jeff/Support/picas_ee_guide/Published examples/asm_curiosity_16F18446_timedLED.X/timedLED.s
+# %SYMTAB Section
+# An enumeration of all symbols in the program.
+# The beginning of the section is indicated by %SYMTAB.
+# Each line describes a single symbol as follows:
+#    <label> <value> [-]<load-adj> <class> <space> <psect> <file-name>
+# The value and load-adj are both in unqualified hexadecimal.
+# All other numeric values are in decimal.  The load-adj is the
+# quantity one needs to add to the symbol value in order to obtain the load
+# address of the symbol.  This value may be signed. If the symbol
+# was defined in a psect then <psect> will be "-". File-name
+# is the name of the object file in which the symbol was defined.
+%SYMTAB
+__Hspace_0 E0 0 ABS 0 - -
+__Hspace_1 501 0 ABS 0 - -
+__Hspace_3 0 0 ABS 0 - -
+__Hspace_4 10013 0 ABS 0 - -
+LEDState 500 FFFFFBA0 BANK1 1 bitbss build/default/production/timedLED.o
+__Hudata_bank0 1C 0 ABS 0 udata_bank0 -
+__Hudata_bank1 1C 0 ABS 0 udata_bank1 -
+__Hudata_bank2 1C 0 ABS 0 udata_bank2 -
+__Hudata_bank3 1C 0 ABS 0 udata_bank3 -
+__Hudata_bank4 1C 0 ABS 0 udata_bank4 -
+__Hudata_bank5 1C 0 ABS 0 udata_bank5 -
+__Hudata_bank6 1C 0 ABS 0 udata_bank6 -
+__Hudata_bank7 1C 0 ABS 0 udata_bank7 -
+__Hudata_bank8 1C 0 ABS 0 udata_bank8 -
+__Hudata_bank9 1C 0 ABS 0 udata_bank9 -
+isr 8 0 CODE 0 isrVec build/default/production/timedLED.o
+resetVec 0 0 CODE 0 resetVec build/default/production/timedLED.o
+__LresetVec 0 0 CODE 0 resetVec -
+__Hudata_bank10 1C 0 ABS 0 udata_bank10 -
+__Hudata_bank11 1C 0 ABS 0 udata_bank11 -
+__Hudata_bank12 1C 0 ABS 0 udata_bank12 -
+__Hudata_bank13 1C 0 ABS 0 udata_bank13 -
+__Hudata_bank14 1C 0 ABS 0 udata_bank14 -
+__Hudata_bank15 1C 0 ABS 0 udata_bank15 -
+__Hudata_bank16 1C 0 ABS 0 udata_bank16 -
+__Hudata_bank17 1C 0 ABS 0 udata_bank17 -
+__Hudata_bank18 1C 0 ABS 0 udata_bank18 -
+__Hudata_bank19 1C 0 ABS 0 udata_bank19 -
+__Hudata_bank20 1C 0 ABS 0 udata_bank20 -
+__Hudata_bank21 1C 0 ABS 0 udata_bank21 -
+__Hudata_bank22 1C 0 ABS 0 udata_bank22 -
+__Hudata_bank23 1C 0 ABS 0 udata_bank23 -
+__Hudata_bank24 1C 0 ABS 0 udata_bank24 -
+__Hudata_bank25 1C 0 ABS 0 udata_bank25 -
+__HresetVec 6 0 CODE 0 resetVec -
+__Hedata 1C 0 ABS 0 edata -
+__Hudata 1C 0 ABS 0 udata -
+__Hbitbss E0 FFFFFF3C ABS 0 bitbss -
+__Hconfig 10018 0 CONFIG 4 config -
+__Ledata 1C 0 ABS 0 edata -
+__Ludata 1C 0 ABS 0 udata -
+__Hcode 1C 0 ABS 0 code -
+__Hdata 1C 0 ABS 0 data -
+__Lcode 1C 0 ABS 0 code -
+__Ldata 1C 0 ABS 0 data -
+__HisrVec 1C 0 CODE 0 isrVec -
+__S0 2B 0 ABS 0 - -
+__S1 A1 0 ABS 0 - -
+__S3 0 0 ABS 0 - -
+__Ludata_bank10 1C 0 ABS 0 udata_bank10 -
+__Ludata_bank11 1C 0 ABS 0 udata_bank11 -
+__Ludata_bank12 1C 0 ABS 0 udata_bank12 -
+__Ludata_bank13 1C 0 ABS 0 udata_bank13 -
+__Ludata_bank14 1C 0 ABS 0 udata_bank14 -
+__Ludata_bank15 1C 0 ABS 0 udata_bank15 -
+__Ludata_bank16 1C 0 ABS 0 udata_bank16 -
+__Ludata_bank17 1C 0 ABS 0 udata_bank17 -
+__Ludata_bank18 1C 0 ABS 0 udata_bank18 -
+__Ludata_bank19 1C 0 ABS 0 udata_bank19 -
+__Ludata_bank20 1C 0 ABS 0 udata_bank20 -
+__Ludata_bank21 1C 0 ABS 0 udata_bank21 -
+__Ludata_bank22 1C 0 ABS 0 udata_bank22 -
+__Ludata_bank23 1C 0 ABS 0 udata_bank23 -
+__Ludata_bank24 1C 0 ABS 0 udata_bank24 -
+__Ludata_bank25 1C 0 ABS 0 udata_bank25 -
+__Bbitbss 1C FFFFFF3C ABS 0 bitbss -
+__Lbitbss E0 FFFFFF3C ABS 0 bitbss -
+__Lconfig 0 0 CONFIG 4 config -
+__LisrVec 8 0 CODE 0 isrVec -
+__Lspace_0 0 0 ABS 0 - -
+__Lspace_1 0 0 ABS 0 - -
+__Lspace_3 0 0 ABS 0 - -
+__Lspace_4 0 0 ABS 0 - -
+__Ludata_bank0 1C 0 ABS 0 udata_bank0 -
+__Ludata_bank1 1C 0 ABS 0 udata_bank1 -
+__Ludata_bank2 1C 0 ABS 0 udata_bank2 -
+__Ludata_bank3 1C 0 ABS 0 udata_bank3 -
+__Ludata_bank4 1C 0 ABS 0 udata_bank4 -
+__Ludata_bank5 1C 0 ABS 0 udata_bank5 -
+__Ludata_bank6 1C 0 ABS 0 udata_bank6 -
+__Ludata_bank7 1C 0 ABS 0 udata_bank7 -
+__Ludata_bank8 1C 0 ABS 0 udata_bank8 -
+__Ludata_bank9 1C 0 ABS 0 udata_bank9 -
+__Hudata_shr 1C 0 ABS 0 udata_shr -
+__Ludata_shr 1C 0 ABS 0 udata_shr -
+# %SPLITSTAB Section
+# This section enumerates all the psect splits performed by the assembler.
+# The beginning of the section is indicated by %SPLITSTAB.
+# Each line is a record a particular split, where the parent psect is on
+# the left and the child on the right.  Note that a child psect is always
+# split form the top of the parent psect. All splits from a given parent
+# are listed in the order in which they occurred.
+%SPLITSTAB
+# %DABS Section
+# This section contains a table of all usuage of the assember
+# directive DABS in the program. Each line has the following format:
+#   <name> <space> <address> <size>
+# If the DABS was originally labelled then that shall be <name>,
+# otherwise name will be "-".  The <space> number is in decimal.
+# <address> and <size> are in byte units as unqaulified hexadecimal
+%DABS
+# %SEGMENTS Section
+# This sections enumerates the segments of the program.  Each segment
+# is described on a single line as follows:
+#    <name> <space> <link address> <file address> <size> <delta>
+# Addresses and size are in unqualified hexadecimal.  The link address
+# and size are in units of delta. The file address is in units of bytes.
+# All other numeric quantities are in decimal.
+%SEGMENTS
+isrVec 0 4 8 27 2
+resetVec 0 0 0 3 2
+bitbss 1 500 A0 1 1
+# %NOTES Section
+# This section contains data of all the note-psects.  The beginning of the section
+# is indicated by %NOTES. The first line indicates the name and decimal
+# byte-length of the first note-psect, e.g.
+#   $codecov_info_hdr 16
+# Each line that follows contains the byte-data of the psect in hexadecimal as a
+# space-separated list. These lines are limited to 16 bytes of data.
+%NOTES

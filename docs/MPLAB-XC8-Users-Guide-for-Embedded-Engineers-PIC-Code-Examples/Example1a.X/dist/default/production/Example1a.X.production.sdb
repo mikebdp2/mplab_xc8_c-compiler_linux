@@ -1,0 +1,36 @@
+[p LITE_MODE AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PIC14E ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F1939 ]
+[d frameptr 6 ]
+"38 C:\Users\c08227\MPLABXProjects\XC8_UG_EEs_PIC_Examples\Example1a.X\example1a.c
+[e E2903 leds `uc
+ON_OFF 85
+]
+"10 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"4 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\sources\c99\pic\__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"30 C:\Users\c08227\MPLABXProjects\XC8_UG_EEs_PIC_Examples\Example1a.X\example1a.c
+[v _main main `(v  1 e 1 0 ]
+"1375 C:\Program Files (x86)\Microchip\xc8\v2.00\pic\include\pic16f1939.h
+[v _TRISB TRISB `VEuc  1 e 1 @141 ]
+"1499
+[v _TRISD TRISD `VEuc  1 e 1 @143 ]
+"2419
+[v _LATB LATB `VEuc  1 e 1 @269 ]
+"2543
+[v _LATD LATD `VEuc  1 e 1 @271 ]
+"3386
+[v _ANSELB ANSELB `VEuc  1 e 1 @397 ]
+"3444
+[v _ANSELD ANSELD `VEuc  1 e 1 @399 ]
+"30 C:\Users\c08227\MPLABXProjects\XC8_UG_EEs_PIC_Examples\Example1a.X\example1a.c
+[v _main main `(v  1 e 1 0 ]
+{
+"46
+} 0

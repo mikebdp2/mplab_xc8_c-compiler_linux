@@ -1,0 +1,4 @@
+ca71712d4f9baa8c54b6090705d54171afd34e69fcdf5be48b8742497f61e861  ./join_parts.sh
+08bd15a00b48c02251cb01aa56678e0c5d4a0aa8a4c1c70fffe65155e4a623b3  ./xc8_v2.39_AVR_sources.zip
+deb210054068844c6cc4f97389e89a3ce5cbe9aade591c35e4352d06c2cd0fe7  ./xc8_v2.39_AVR_sources.zip_part01
+52e0012da1aee648d15f1a6591e85f6a6b966f7df47a97327b2aaed95602eb3c  ./xc8_v2.39_AVR_sources.zip_part02

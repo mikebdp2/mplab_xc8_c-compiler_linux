@@ -1,0 +1,6 @@
+e71b3c2b292bf01f6011fb2974dd462a8129d351fa32e3dab9e62f180a30a4db  ./join_parts.sh
+2e7f490eeac8cc7e168c35cb30e339b1315fd68bee2392fe172a06fa304a315e  ./xc8-avr-sources-v2.46.zip
+a465f531cf4d968fe75f7767147438bb939ef6f9f4e6dbfaf2634c9895e5ca3c  ./xc8-avr-sources-v2.46.zip_part01
+af554af96cf783760f1ae06c286f899359e142206f954cb6a0d56719ece77de6  ./xc8-avr-sources-v2.46.zip_part02
+b66664adb1a8b6f1b2a6dc145693fe2bc547b5be49088d3b6c73a708f9c618a0  ./xc8-avr-sources-v2.46.zip_part03
+e1fdc9742905ab4734c7dfebce529fe609e45627e7beb27ff57de8aff79afd35  ./xc8-avr-sources-v2.46.zip_part04
